@@ -16,15 +16,13 @@ Route::get('dashboard', function () {
     return Inertia::render('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-
-// ── Main portfolio site (arifhassan.com) ──────────────────────────────
 Route::get('/', [PortfolioController::class, 'index'])->name('home');
 Route::post('/contact', [PortfolioController::class, 'contact'])->name('contact');
 
-// ── Blog subdomain (blog.arifhassan.com) ──────────────────────────────
-Route::domain('blog.' . config('app.base_domain', 'arifhassan.com'))->group(function () {
-    Route::get('/', [\App\Http\Controllers\BlogController::class, 'index'])->name('blog.index');
-    Route::get('/{slug}', [\App\Http\Controllers\BlogController::class, 'show'])->name('blog.show');
+// Blog
+Route::prefix('blog')->name('blog.')->group(function () {
+    Route::get('/', [\App\Http\Controllers\BlogController::class, 'index'])->name('index');
+    Route::get('/{slug}', [\App\Http\Controllers\BlogController::class, 'show'])->name('show');
 });
 
 require __DIR__ . '/settings.php';

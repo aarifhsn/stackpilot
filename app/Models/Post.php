@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Post extends Model
 {
@@ -39,6 +40,15 @@ class Post extends Model
 
     public function getExcerptAttribute($value): string
     {
-        return $value ?: \Str::limit(strip_tags($this->content), 150);
+        return $value ?: Str::limit(strip_tags($this->content), 150);
+    }
+
+    protected static function booted(): void
+    {
+        static::creating(function ($post) {
+            if (empty($post->user_id)) {
+                $post->user_id = auth()->id();
+            }
+        });
     }
 }

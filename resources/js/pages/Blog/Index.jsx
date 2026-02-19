@@ -1,27 +1,57 @@
-import { Head, Link, usePage } from '@inertiajs/react';
+import { Head, Link } from '@inertiajs/react';
 import { useState } from 'react';
 
 function BlogNavbar({ settings }) {
     return (
-        <header className="fixed top-0 left-0 w-full z-50 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-100 dark:border-slate-800">
-            <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-                <a href={settings?.blog_url || '/'} className="flex items-center gap-3" style={{ textDecoration: 'none' }}>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="32" height="32">
-                        <rect width="48" height="48" rx="9" fill="#0F172A" />
-                        <polygon points="24,6 13,42 19,42 24,20" fill="#F59E0B" />
-                        <polygon points="24,6 35,42 29,42 24,20" fill="#F59E0B" />
-                        <rect x="14" y="28" width="20" height="3" rx="1.5" fill="#F59E0B" />
-                    </svg>
+        <header className="fixed top-0 left-0 z-50 w-full border-b border-slate-100 bg-white/95 backdrop-blur-md dark:border-slate-800 dark:bg-slate-900/95">
+            <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-6">
+                {/* Logo */}
+                <a
+                    href="/"
+                    className="group flex items-center gap-3"
+                    style={{ textDecoration: 'none' }}
+                >
+                    <div className="relative">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 48 48"
+                            width="38"
+                            height="38"
+                        >
+                            <rect
+                                width="48"
+                                height="48"
+                                rx="9"
+                                fill="#0F172A"
+                            />
+                            <g transform="translate(9, 9) scale(0.513, 0.513)">
+                                <path
+                                    fill="white"
+                                    fillRule="evenodd"
+                                    clipRule="evenodd"
+                                    d="M0.001,60.789c-0.035-1.043,0.688-1.877,1.143-2.73c1.366-2.564,2.773-5.168,4.073-7.799c0.877-1.774,1.632-3.578,2.682-5.266c1.522-2.443,2.786-5.109,4.123-7.748c1.328-2.621,2.551-5.293,3.974-7.896c0.907-1.66,1.74-3.559,2.781-5.115c1.132-1.693,2.556-2.883,5.066-3.031c1.251-0.072,2.631,0.051,4.023,0.051c2.819,0,5.181,0.096,8.146,0c0.917-0.029,3.203-0.285,3.477,0.397c0.23,0.572-0.667,1.922-0.993,2.533C33.044,34.4,27.843,44.621,22.402,54.879c-1.497,2.822-2.565,5.977-6.358,6.408c-1.579,0.178-3.569,0.088-5.513,0.049c-2.601-0.051-5.559-0.049-8.245-0.049C1.479,61.287,0.464,61.498,0.001,60.789z"
+                                />
+                                <path
+                                    fill="white"
+                                    fillRule="evenodd"
+                                    clipRule="evenodd"
+                                    d="M59.852,60.84c-0.643,0.906-2.301,0.648-3.725,0.596c-2.814-0.105-5.394-0.051-8.344-0.051c-1.988,0-4.132,0.225-5.563-0.348c-2.343-0.936-3.468-3.621-4.619-5.91c-0.661-1.314-1.435-2.611-2.136-3.873c-0.689-1.24-1.352-2.598-2.086-3.975C33.049,46.66,32.7,46,32.336,45.293c-0.449-0.869-1.65-2.438-0.199-2.682c1.135-0.191,2.587,0,3.924,0c2.558,0,5.311-0.101,7.848,0c2.417,0.096,4.574-0.219,6.159,0.744c1.861,1.131,2.852,3.371,3.725,5.414c0.437,1.024,1.022,2.033,1.54,3.029c1.026,1.978,2.035,3.959,3.08,5.961C58.934,58.76,59.591,59.713,59.852,60.84z"
+                                />
+                            </g>
+                        </svg>
+                    </div>
                     <div>
-                        <div className="text-sm font-black text-slate-900 dark:text-white">
-                            arif<span className="font-light">hassan</span>
-                            <span className="ml-2 text-xs font-bold text-gray-500 tracking-widest uppercase">Blog</span>
+                        <div className="text-[15px] leading-none font-black tracking-widest text-slate-500 dark:text-white">
+                            arif<span className="font-light"> hassan</span>
+                        </div>
+                        <div className="mt-0.5 text-[9px] font-bold tracking-[0.25em] text-slate-400 uppercase">
+                            Full-Stack Dev
                         </div>
                     </div>
                 </a>
-                
-                    href="https://arifhassan.com"
-                    className="text-xs font-bold tracking-widest uppercase text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors"
+                <a
+                    href="/"
+                    className="text-xs font-bold tracking-widest text-slate-500 uppercase transition-colors hover:text-slate-800 dark:text-slate-400 dark:hover:text-white"
                     style={{ textDecoration: 'none' }}
                 >
                     ← Portfolio
@@ -34,8 +64,8 @@ function BlogNavbar({ settings }) {
 function PostCard({ post }) {
     return (
         <Link
-            href={`/${post.slug}`}
-            className="group block bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-sm hover:shadow-md hover:border-gray-300 dark:hover:border-gray-700 transition-all duration-300 overflow-hidden"
+            href={`/blog/${post.slug}`}
+            className="group block overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm transition-all duration-300 hover:border-gray-300 hover:shadow-md dark:border-slate-700 dark:bg-slate-800 dark:hover:border-gray-700"
             style={{ textDecoration: 'none' }}
         >
             {/* Thumbnail */}
@@ -44,10 +74,10 @@ function PostCard({ post }) {
                     <img
                         src={post.featured_image}
                         alt={post.title}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                 ) : (
-                    <div className="w-full h-full flex items-center justify-center text-4xl opacity-20">
+                    <div className="flex h-full w-full items-center justify-center text-4xl opacity-20">
                         ✍️
                     </div>
                 )}
@@ -55,9 +85,9 @@ function PostCard({ post }) {
 
             <div className="p-6">
                 {/* Category + Date */}
-                <div className="flex items-center gap-3 mb-3">
+                <div className="mb-3 flex items-center gap-3">
                     {post.category && (
-                        <span className="px-2.5 py-1 bg-gray-50 dark:bg-gray-900/20 border border-gray-200 dark:border-gray-800 rounded-lg text-xs font-bold text-gray-700 dark:text-gray-400 uppercase tracking-wide">
+                        <span className="rounded-lg border border-gray-200 bg-gray-50 px-2.5 py-1 text-xs font-bold tracking-wide text-gray-700 uppercase dark:border-gray-800 dark:bg-gray-900/20 dark:text-gray-400">
                             {post.category}
                         </span>
                     )}
@@ -67,23 +97,23 @@ function PostCard({ post }) {
                 </div>
 
                 {/* Title */}
-                <h2 className="text-lg font-bold text-slate-900 dark:text-white leading-snug mb-3 group-hover:text-gray-600 dark:group-hover:text-gray-400 transition-colors">
+                <h2 className="mb-3 text-lg leading-snug font-bold text-slate-800 transition-colors group-hover:text-gray-600 dark:text-white dark:group-hover:text-gray-400">
                     {post.title}
                 </h2>
 
                 {/* Excerpt */}
                 {post.excerpt && (
-                    <p className="text-sm leading-6 text-slate-500 dark:text-slate-400 line-clamp-3">
+                    <p className="line-clamp-3 text-sm leading-6 text-slate-500 dark:text-slate-400">
                         {post.excerpt}
                     </p>
                 )}
 
                 {/* Author + Read more */}
-                <div className="flex items-center justify-between mt-5 pt-4 border-t border-slate-50 dark:border-slate-700">
+                <div className="mt-5 flex items-center justify-between border-t border-slate-50 pt-4 dark:border-slate-700">
                     <span className="text-xs font-semibold text-slate-400 dark:text-slate-500">
                         {post.author}
                     </span>
-                    <span className="text-xs font-bold text-gray-500 group-hover:translate-x-1 transition-transform inline-block">
+                    <span className="inline-block text-xs font-bold text-gray-500 transition-transform group-hover:translate-x-1">
                         Read more →
                     </span>
                 </div>
@@ -95,83 +125,92 @@ function PostCard({ post }) {
 export default function BlogIndex({ posts, categories, settings }) {
     const [activeCategory, setActiveCategory] = useState('all');
 
-    const filtered = activeCategory === 'all'
-        ? posts.data
-        : posts.data.filter(p => p.category === activeCategory);
+    const filtered =
+        activeCategory === 'all'
+            ? posts.data
+            : posts.data.filter((p) => p.category === activeCategory);
 
     return (
         <>
             <Head title={`Blog — ${settings?.site_title || 'Arif Hassan'}`}>
-                <meta name="description" content="Articles on Laravel, React, WordPress and full-stack development." />
+                <meta
+                    name="description"
+                    content="Articles on Laravel, React, WordPress and full-stack development."
+                />
             </Head>
 
-            <div className="min-h-screen bg-slate-50 dark:bg-slate-950 font-poppins">
+            <div className="min-h-screen bg-slate-50 font-poppins dark:bg-slate-950">
                 <BlogNavbar settings={settings} />
 
                 {/* Hero */}
-                <div className="pt-32 pb-16 px-6 text-center bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800">
-                    <p className="text-xs font-bold tracking-widest text-gray-500 uppercase mb-3">
+                <div className="border-b border-slate-100 bg-white px-6 pt-32 pb-16 text-center dark:border-slate-800 dark:bg-slate-900">
+                    <p className="mb-3 text-xs font-bold tracking-widest text-gray-500 uppercase">
                         Writing & Thoughts
                     </p>
-                    <h1 className="text-5xl font-black text-slate-900 dark:text-white mb-4">
+                    <h1 className="mb-4 text-5xl font-black text-slate-800 dark:text-white">
                         The Blog
                     </h1>
-                    <p className="text-slate-400 dark:text-slate-500 text-sm max-w-md mx-auto leading-7">
-                        Articles on Laravel, React, WordPress, SaaS architecture and remote work.
+                    <p className="mx-auto max-w-md text-sm leading-7 text-slate-400 dark:text-slate-500">
+                        Articles on Laravel, React, WordPress, SaaS architecture
+                        and remote work.
                     </p>
                 </div>
 
-                <div className="max-w-5xl mx-auto px-6 py-16">
+                <div className="mx-auto max-w-5xl px-6 py-16">
                     {/* Category filters */}
                     {categories?.length > 0 && (
-                        <div className="flex flex-wrap gap-2 mb-12 justify-center">
+                        <div className="mb-12 flex flex-wrap justify-center gap-2">
                             <button
                                 onClick={() => setActiveCategory('all')}
-                                className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest border cursor-pointer transition-all ${
+                                className={`cursor-pointer rounded-full border px-4 py-2 text-xs font-bold tracking-widest uppercase transition-all ${
                                     activeCategory === 'all'
-                                        ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 border-slate-900 dark:border-white'
-                                        : 'bg-transparent text-slate-500 border-slate-200 dark:border-slate-700 hover:border-slate-400 dark:text-slate-400'
+                                        ? 'border-slate-900 bg-slate-900 text-white dark:border-white dark:bg-white dark:text-slate-800'
+                                        : 'border-slate-200 bg-transparent text-slate-500 hover:border-slate-400 dark:border-slate-700 dark:text-slate-400'
                                 }`}
                             >
                                 All Posts
                             </button>
-                            {categories.map(cat => (
+                            {categories.map((cat) => (
                                 <button
                                     key={cat.id}
                                     onClick={() => setActiveCategory(cat.name)}
-                                    className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest border cursor-pointer transition-all ${
+                                    className={`cursor-pointer rounded-full border px-4 py-2 text-xs font-bold tracking-widest uppercase transition-all ${
                                         activeCategory === cat.name
-                                            ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 border-slate-900'
-                                            : 'bg-transparent text-slate-500 border-slate-200 dark:border-slate-700 hover:border-slate-400 dark:text-slate-400'
+                                            ? 'border-slate-900 bg-slate-900 text-white dark:bg-white dark:text-slate-800'
+                                            : 'border-slate-200 bg-transparent text-slate-500 hover:border-slate-400 dark:border-slate-700 dark:text-slate-400'
                                     }`}
                                 >
                                     {cat.name}
-                                    <span className="ml-1.5 opacity-50">({cat.posts_count})</span>
+                                    <span className="ml-1.5 opacity-50">
+                                        ({cat.posts_count})
+                                    </span>
                                 </button>
                             ))}
                         </div>
                     )}
 
                     {/* Posts grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {filtered.map(post => (
+                    <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                        {filtered.map((post) => (
                             <PostCard key={post.id} post={post} />
                         ))}
                         {filtered.length === 0 && (
-                            <div className="col-span-3 text-center py-24 text-slate-400">
-                                <span className="text-5xl block mb-4">✍️</span>
-                                <p className="font-semibold">No posts yet in this category.</p>
+                            <div className="col-span-3 py-24 text-center text-slate-400">
+                                <span className="mb-4 block text-5xl">✍️</span>
+                                <p className="font-semibold">
+                                    No posts yet in this category.
+                                </p>
                             </div>
                         )}
                     </div>
 
                     {/* Pagination */}
                     {(posts.prev_page_url || posts.next_page_url) && (
-                        <div className="flex justify-center gap-3 mt-16">
+                        <div className="mt-16 flex justify-center gap-3">
                             {posts.prev_page_url && (
                                 <Link
                                     href={posts.prev_page_url}
-                                    className="px-6 py-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-bold text-slate-600 dark:text-slate-300 hover:border-gray-400 transition-all"
+                                    className="rounded-xl border border-slate-200 bg-white px-6 py-3 text-xs font-bold text-slate-600 transition-all hover:border-gray-400 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300"
                                     style={{ textDecoration: 'none' }}
                                 >
                                     ← Previous
@@ -180,7 +219,7 @@ export default function BlogIndex({ posts, categories, settings }) {
                             {posts.next_page_url && (
                                 <Link
                                     href={posts.next_page_url}
-                                    className="px-6 py-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-xl text-xs font-bold hover:bg-gray-400 hover:text-slate-900 transition-all"
+                                    className="rounded-xl bg-slate-900 px-6 py-3 text-xs font-bold text-white transition-all hover:bg-gray-400 hover:text-slate-800 dark:bg-white dark:text-slate-800"
                                     style={{ textDecoration: 'none' }}
                                 >
                                     Next →
@@ -191,9 +230,12 @@ export default function BlogIndex({ posts, categories, settings }) {
                 </div>
 
                 {/* Footer */}
-                <footer className="border-t border-slate-200 dark:border-slate-800 py-8 text-center text-xs text-slate-400 dark:text-slate-600">
+                <footer className="border-t border-slate-200 py-8 text-center text-xs text-slate-400 dark:border-slate-800 dark:text-slate-600">
                     © {new Date().getFullYear()} Arif Hassan ·{' '}
-                    <a href="https://arifhassan.com" className="hover:text-gray-500 transition-colors">
+                    <a
+                        href="https://arifhassan.com"
+                        className="transition-colors hover:text-gray-500"
+                    >
                         Portfolio
                     </a>
                 </footer>

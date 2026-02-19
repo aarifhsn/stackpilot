@@ -1,4 +1,4 @@
-import { Head } from '@inertiajs/react';
+import { Head, Link } from '@inertiajs/react';
 import { useEffect, useRef, useState } from 'react';
 
 function scrollTo(id) {
@@ -66,7 +66,7 @@ function Navbar({ dark, setDark, settings }) {
         { label: 'About', id: 'about' },
         {
             label: 'Blog',
-            href: settings?.blog_url || 'https://blog.arifhassan.com',
+            href: settings?.blog_url || '/blog',
         },
     ];
 
@@ -98,34 +98,25 @@ function Navbar({ dark, setDark, settings }) {
                                 rx="9"
                                 fill="#0F172A"
                             />
-                            <polygon
-                                points="24,6 13,42 19,42 24,20"
-                                fill="#F59E0B"
-                            />
-                            <polygon
-                                points="24,6 35,42 29,42 24,20"
-                                fill="#F59E0B"
-                            />
-                            <rect
-                                x="14"
-                                y="28"
-                                width="20"
-                                height="3"
-                                rx="1.5"
-                                fill="#F59E0B"
-                            />
-                            <circle
-                                cx="39"
-                                cy="11"
-                                r="4"
-                                fill="#F59E0B"
-                                opacity="0.9"
-                            />
+                            <g transform="translate(9, 9) scale(0.513, 0.513)">
+                                <path
+                                    fill="white"
+                                    fillRule="evenodd"
+                                    clipRule="evenodd"
+                                    d="M0.001,60.789c-0.035-1.043,0.688-1.877,1.143-2.73c1.366-2.564,2.773-5.168,4.073-7.799c0.877-1.774,1.632-3.578,2.682-5.266c1.522-2.443,2.786-5.109,4.123-7.748c1.328-2.621,2.551-5.293,3.974-7.896c0.907-1.66,1.74-3.559,2.781-5.115c1.132-1.693,2.556-2.883,5.066-3.031c1.251-0.072,2.631,0.051,4.023,0.051c2.819,0,5.181,0.096,8.146,0c0.917-0.029,3.203-0.285,3.477,0.397c0.23,0.572-0.667,1.922-0.993,2.533C33.044,34.4,27.843,44.621,22.402,54.879c-1.497,2.822-2.565,5.977-6.358,6.408c-1.579,0.178-3.569,0.088-5.513,0.049c-2.601-0.051-5.559-0.049-8.245-0.049C1.479,61.287,0.464,61.498,0.001,60.789z"
+                                />
+                                <path
+                                    fill="white"
+                                    fillRule="evenodd"
+                                    clipRule="evenodd"
+                                    d="M59.852,60.84c-0.643,0.906-2.301,0.648-3.725,0.596c-2.814-0.105-5.394-0.051-8.344-0.051c-1.988,0-4.132,0.225-5.563-0.348c-2.343-0.936-3.468-3.621-4.619-5.91c-0.661-1.314-1.435-2.611-2.136-3.873c-0.689-1.24-1.352-2.598-2.086-3.975C33.049,46.66,32.7,46,32.336,45.293c-0.449-0.869-1.65-2.438-0.199-2.682c1.135-0.191,2.587,0,3.924,0c2.558,0,5.311-0.101,7.848,0c2.417,0.096,4.574-0.219,6.159,0.744c1.861,1.131,2.852,3.371,3.725,5.414c0.437,1.024,1.022,2.033,1.54,3.029c1.026,1.978,2.035,3.959,3.08,5.961C58.934,58.76,59.591,59.713,59.852,60.84z"
+                                />
+                            </g>
                         </svg>
                     </div>
                     <div>
-                        <div className="text-[15px] leading-none font-black tracking-tight text-slate-900 dark:text-white">
-                            arif<span className="font-light">hassan</span>
+                        <div className="text-[15px] leading-none font-black tracking-widest text-slate-500 dark:text-white">
+                            arif<span className="font-light"> hassan</span>
                         </div>
                         <div className="mt-0.5 text-[9px] font-bold tracking-[0.25em] text-slate-400 uppercase">
                             Full-Stack Dev
@@ -137,16 +128,26 @@ function Navbar({ dark, setDark, settings }) {
                 <nav className="hidden items-center gap-1 lg:flex">
                     {navLinks.map((link) =>
                         link.href ? (
-                            <a
-                                key={link.label}
-                                href={link.href}
-                                target="_blank"
-                                rel="noreferrer"
-                                className="rounded-lg px-3 py-2 text-[11px] font-bold tracking-[0.18em] text-slate-500 uppercase transition-all hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white"
-                                style={{ textDecoration: 'none' }}
-                            >
-                                {link.label}
-                            </a>
+                            link.label === 'Blog' ? (
+                                <Link
+                                    key={link.label}
+                                    href={link.href}
+                                    className="rounded-lg px-3 py-2 text-[11px] font-bold tracking-[0.18em] text-slate-500 uppercase transition-all hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white"
+                                >
+                                    {link.label}
+                                </Link>
+                            ) : (
+                                <a
+                                    key={link.label}
+                                    href={link.href}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="rounded-lg px-3 py-2 text-[11px] font-bold tracking-[0.18em] text-slate-500 uppercase transition-all hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white"
+                                    style={{ textDecoration: 'none' }}
+                                >
+                                    {link.label}
+                                </a>
+                            )
                         ) : (
                             <button
                                 key={link.label}
@@ -163,7 +164,7 @@ function Navbar({ dark, setDark, settings }) {
                     )}
                     <button
                         onClick={() => scrollTo('contact')}
-                        className="ml-2 cursor-pointer rounded-lg border-0 bg-gray-400 px-4 py-2 text-[11px] font-bold tracking-[0.18em] text-slate-900 uppercase transition-all hover:bg-gray-500"
+                        className="ml-2 cursor-pointer rounded-lg border-0 bg-gray-800 px-4 py-2 text-[11px] font-bold tracking-[0.18em] text-slate-100 uppercase transition-all hover:bg-gray-500"
                     >
                         Contact
                     </button>
@@ -236,14 +237,25 @@ function Navbar({ dark, setDark, settings }) {
                 <div className="flex flex-col gap-1 border-t border-slate-100 px-6 py-4 dark:border-slate-800">
                     {navLinks.map((link) =>
                         link.href ? (
-                            <a
-                                key={link.label}
-                                href={link.href}
-                                className="border-b border-slate-50 py-3 text-xs font-bold tracking-widest text-slate-500 uppercase dark:border-slate-800 dark:text-slate-400"
-                                style={{ textDecoration: 'none' }}
-                            >
-                                {link.label}
-                            </a>
+                            link.label === 'Blog' ? (
+                                <Link
+                                    key={link.label}
+                                    href={link.href}
+                                    className="border-b border-slate-50 py-3 text-xs font-bold tracking-widest text-slate-500 uppercase dark:border-slate-800 dark:text-slate-400"
+                                    onClick={() => setMobileOpen(false)}
+                                >
+                                    {link.label}
+                                </Link>
+                            ) : (
+                                <a
+                                    key={link.label}
+                                    href={link.href}
+                                    className="border-b border-slate-50 py-3 text-xs font-bold tracking-widest text-slate-500 uppercase dark:border-slate-800 dark:text-slate-400"
+                                    style={{ textDecoration: 'none' }}
+                                >
+                                    {link.label}
+                                </a>
+                            )
                         ) : (
                             <button
                                 key={link.label}
@@ -339,10 +351,9 @@ function Hero({ settings }) {
     return (
         <section
             id="home"
-            className="devs_top_info relative mb-12 flex min-h-[480px] items-center justify-center bg-white bg-contain bg-center bg-no-repeat px-4 pt-24 text-start md:my-2 md:min-h-screen md:py-0 lg:px-16 xl:px-32 2xl:px-12 dark:bg-slate-900"
+            className="relative flex min-h-[480px] items-start justify-center bg-white bg-contain bg-center bg-no-repeat pt-42 pb-24 text-start md:min-h-[80vh] dark:bg-slate-900"
         >
-            <div className="devs_top_content font-poppins w-4/5 md:w-5/6 lg:w-full">
-                {/* Name heading — your WP style */}
+            <div className="mx-auto max-w-6xl px-6 lg:px-8">
                 <h2 className="relative text-3xl font-extrabold text-slate-700 md:text-5xl 2xl:text-6xl dark:text-slate-300">
                     <span className="block text-xl text-slate-500 md:text-2xl 2xl:text-4xl">
                         {settings?.hero_greeting || "Hi, I'm Arif Hassan"}
@@ -353,7 +364,7 @@ function Hero({ settings }) {
                 </h2>
 
                 {/* Description */}
-                <p className="font-poppins my-3 max-w-2xl text-left text-xs leading-6 font-medium text-gray-500 md:my-6 lg:text-sm lg:leading-9 dark:text-gray-300">
+                <p className="my-3 max-w-2xl text-left font-poppins text-xs leading-6 font-medium text-gray-500 md:my-6 lg:text-sm lg:leading-9 dark:text-gray-300">
                     {settings?.hero_content ||
                         'I help startups and businesses build fast, reliable web apps. Specialising in Laravel + React SaaS platforms, API-driven systems, and WordPress engineering — shipped and production-ready.'}
                 </p>
@@ -365,7 +376,7 @@ function Hero({ settings }) {
                             ⚡ Tech Stack
                         </span>
                     </div>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex w-full flex-wrap gap-2">
                         {visible.map((tech) => (
                             <span
                                 key={tech}
@@ -409,7 +420,7 @@ function Hero({ settings }) {
                 </div>
 
                 {/* Stats row */}
-                <div className="mt-8 flex flex-wrap gap-8 border-t border-slate-100 pt-8 dark:border-slate-800">
+                <div className="mt-8 flex flex-wrap gap-8 border-t border-slate-200 pt-8 dark:border-slate-800">
                     {[
                         { num: '6+', label: 'Years Experience' },
                         { num: '40+', label: 'Projects Shipped' },
@@ -461,11 +472,8 @@ function About({ settings }) {
     ];
 
     return (
-        <section
-            id="about"
-            className="bg-slate-50 px-6 py-24 lg:px-8 dark:bg-slate-950"
-        >
-            <div className="mx-auto max-w-6xl">
+        <section id="about" className="bg-slate-50 py-24 dark:bg-slate-950">
+            <div className="mx-auto max-w-6xl px-6 lg:px-8">
                 <SectionHeader
                     title="About Me"
                     subtitle="Developer · Problem Solver · Remote Ready"
@@ -497,13 +505,13 @@ function About({ settings }) {
 
                         <h3 className="mb-4 text-2xl leading-snug font-black text-slate-900 dark:text-white">
                             I build web apps that are ready for{' '}
-                            <span className="text-gray-500">real users</span> —
+                            <span className="text-gray-500">real users </span>
                             not just demos.
                         </h3>
 
                         <p className="mb-6 text-sm leading-8 text-slate-500 dark:text-slate-400">
                             {settings?.about_content ||
-                                'I help startups and growing businesses turn ideas into fast, reliable web applications. My core stack is Laravel + React for SaaS platforms, dashboards, and API-driven systems — with 6+ years of hands-on experience shipping production-ready solutions using Next.js, GraphQL, Docker, and WordPress.'}
+                                'I help startups and growing businesses turn ideas into fast, reliable web applications. My core stack is Laravel + React for SaaS platforms, dashboards, and API-driven systems, with 6+ years of hands-on experience shipping production-ready solutions using Next.js, GraphQL, Docker, and WordPress.'}
                         </p>
 
                         <ul className="space-y-3">
@@ -638,7 +646,7 @@ function Portfolio({ portfolios = [], settings }) {
             id="portfolio"
             className="bg-white px-6 py-24 lg:px-8 dark:bg-slate-900"
         >
-            <div className="mx-auto max-w-6xl">
+            <div className="mx-auto max-w-6xl px-6 lg:px-8">
                 <SectionHeader
                     title={settings?.portfolio_title || 'Recent Projects'}
                     subtitle={`${filtered.length} of ${portfolios.length} projects`}
@@ -825,11 +833,8 @@ function Services({ services = [], settings }) {
     const [ref, visible] = useFadeIn();
 
     return (
-        <section
-            id="service"
-            className="bg-slate-50 px-6 py-24 lg:px-8 dark:bg-slate-950"
-        >
-            <div className="mx-auto max-w-6xl">
+        <section id="service" className="bg-slate-50 py-24 dark:bg-slate-950">
+            <div className="mx-auto max-w-6xl px-6 lg:px-8">
                 <SectionHeader
                     title={settings?.service_title || 'Services'}
                     subtitle={
@@ -1028,11 +1033,8 @@ function Contact({ settings }) {
     ].filter(Boolean);
 
     return (
-        <section
-            id="contact"
-            className="bg-white px-6 py-24 lg:px-8 dark:bg-slate-900"
-        >
-            <div className="mx-auto max-w-6xl">
+        <section id="contact" className="bg-white py-24 dark:bg-slate-900">
+            <div className="mx-auto max-w-6xl px-6 lg:px-8">
                 <SectionHeader
                     title={settings?.contact_title || 'Get In Touch'}
                     subtitle="Have a project in mind? I'm available — reach out any way you prefer."
@@ -1337,6 +1339,16 @@ export default function PortfolioPage({
     settings = {},
 }) {
     const [dark, setDark] = useDarkMode();
+    const [showTop, setShowTop] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setShowTop(window.scrollY > 200); // show after 200px scroll
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     return (
         <>
@@ -1355,7 +1367,7 @@ export default function PortfolioPage({
             </Head>
 
             <div className={dark ? 'dark' : ''}>
-                <div className="font-poppins min-h-screen bg-white transition-colors duration-300 dark:bg-slate-900">
+                <div className="min-h-screen bg-white font-poppins transition-colors duration-300 dark:bg-slate-900">
                     <Navbar dark={dark} setDark={setDark} settings={settings} />
 
                     <main>
@@ -1372,15 +1384,17 @@ export default function PortfolioPage({
                     <Footer settings={settings} />
 
                     {/* Back to top */}
-                    <button
-                        onClick={() =>
-                            window.scrollTo({ top: 0, behavior: 'smooth' })
-                        }
-                        className="fixed right-6 bottom-8 z-50 flex h-10 w-10 transform cursor-pointer items-center justify-center rounded-full border-0 bg-gray-400 text-sm font-bold text-slate-900 shadow-lg transition-all hover:-translate-y-0.5 hover:bg-gray-500 hover:shadow-xl"
-                        title="Back to top"
-                    >
-                        ↑
-                    </button>
+                    {showTop && (
+                        <button
+                            onClick={() =>
+                                window.scrollTo({ top: 0, behavior: 'smooth' })
+                            }
+                            className="fixed right-6 bottom-8 z-50 flex h-10 w-10 items-center justify-center rounded-full bg-black text-sm font-bold text-slate-100 shadow-lg transition-all hover:-translate-y-0.5 hover:bg-gray-500 hover:shadow-xl"
+                            title="Back to top"
+                        >
+                            ↑
+                        </button>
+                    )}
                 </div>
             </div>
         </>
