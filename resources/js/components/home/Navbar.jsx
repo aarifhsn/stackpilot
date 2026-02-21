@@ -132,7 +132,7 @@ export default function Navbar({ dark, setDark, settings }) {
                                 <Link
                                     key={link.label}
                                     href={link.href}
-                                    className="rounded-lg px-3 py-2 text-[11px] font-bold tracking-[0.18em] text-slate-500 uppercase transition-all hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white"
+                                    className="rounded-lg px-3 py-2 text-[11px] font-bold tracking-[0.18em] text-slate-500 uppercase transition-all hover:bg-slate-50 hover:text-slate-700 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white"
                                 >
                                     {link.label}
                                 </Link>
@@ -142,7 +142,7 @@ export default function Navbar({ dark, setDark, settings }) {
                                     href={link.href}
                                     target="_blank"
                                     rel="noreferrer"
-                                    className="rounded-lg px-3 py-2 text-[11px] font-bold tracking-[0.18em] text-slate-500 uppercase transition-all hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white"
+                                    className="rounded-lg px-3 py-2 text-[11px] font-bold tracking-[0.18em] text-slate-500 uppercase transition-all hover:bg-slate-50 hover:text-slate-700 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white"
                                     style={{ textDecoration: 'none' }}
                                 >
                                     {link.label}
@@ -154,8 +154,8 @@ export default function Navbar({ dark, setDark, settings }) {
                                 onClick={() => scrollTo(link.id)}
                                 className={`cursor-pointer rounded-lg border-0 bg-transparent px-3 py-2 text-[11px] font-bold tracking-[0.18em] uppercase transition-all ${
                                     active === link.id
-                                        ? 'bg-slate-50 text-slate-900 dark:bg-slate-800 dark:text-white'
-                                        : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white'
+                                        ? 'bg-slate-50 text-slate-700 dark:bg-slate-800 dark:text-white'
+                                        : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white'
                                 }`}
                             >
                                 {link.label}
@@ -274,7 +274,7 @@ export default function Navbar({ dark, setDark, settings }) {
                             scrollTo('contact');
                             setMobileOpen(false);
                         }}
-                        className="mt-3 cursor-pointer rounded-lg border-0 bg-gray-400 py-3 text-xs font-bold tracking-widest text-slate-900 uppercase"
+                        className="mt-3 cursor-pointer rounded-lg border-0 bg-gray-400 py-3 text-xs font-bold tracking-widest text-slate-700 uppercase"
                     >
                         Contact
                     </button>

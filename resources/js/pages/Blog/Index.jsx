@@ -37,7 +37,7 @@ function PostCard({ post }) {
                 </div>
 
                 {/* Title */}
-                <h2 className="mb-3 text-lg leading-snug font-bold text-slate-800 transition-colors group-hover:text-gray-600 dark:text-white dark:group-hover:text-gray-400">
+                <h2 className="mb-3 text-lg leading-snug font-bold text-slate-700 transition-colors group-hover:text-gray-600 dark:text-white dark:group-hover:text-gray-400">
                     {post.title}
                 </h2>
 
@@ -92,7 +92,7 @@ export default function BlogIndex({
                     <p className="mb-3 text-xs font-bold tracking-widest text-gray-500 uppercase">
                         Writing & Thoughts
                     </p>
-                    <h1 className="mb-4 text-5xl font-black text-slate-800 dark:text-white">
+                    <h1 className="mb-4 text-5xl font-black text-slate-700 dark:text-white">
                         The Blog
                     </h1>
                     <p className="mx-auto max-w-md text-sm leading-7 text-slate-400 dark:text-slate-500">
@@ -109,7 +109,7 @@ export default function BlogIndex({
                                 onClick={() => filterByCategory(null)}
                                 className={`cursor-pointer rounded-full border px-4 py-2 text-xs font-bold tracking-widest uppercase transition-all ${
                                     !active_category
-                                        ? 'border-slate-900 bg-slate-900 text-white dark:border-white dark:bg-white dark:text-slate-900'
+                                        ? 'border-slate-900 bg-slate-900 text-white dark:border-white dark:bg-white dark:text-slate-700'
                                         : 'border-slate-200 bg-transparent text-slate-500 hover:border-slate-400 dark:border-slate-700 dark:text-slate-400'
                                 }`}
                             >
@@ -121,7 +121,7 @@ export default function BlogIndex({
                                     onClick={() => filterByCategory(cat.id)}
                                     className={`cursor-pointer rounded-full border px-4 py-2 text-xs font-bold tracking-widest uppercase transition-all ${
                                         active_category === cat.id
-                                            ? 'border-slate-900 bg-slate-900 text-white dark:bg-white dark:text-slate-900'
+                                            ? 'border-slate-900 bg-slate-900 text-white dark:bg-white dark:text-slate-700'
                                             : 'border-slate-200 bg-transparent text-slate-500 hover:border-slate-400 dark:border-slate-700 dark:text-slate-400'
                                     }`}
                                 >
@@ -156,7 +156,7 @@ export default function BlogIndex({
                             {posts.next_page_url && (
                                 <Link
                                     href={posts.next_page_url}
-                                    className="rounded-xl bg-slate-900 px-6 py-3 text-xs font-bold text-white transition-all hover:bg-gray-400 hover:text-slate-800 dark:bg-white dark:text-slate-800"
+                                    className="rounded-xl bg-slate-900 px-6 py-3 text-xs font-bold text-white transition-all hover:bg-gray-400 hover:text-slate-700 dark:bg-white dark:text-slate-700"
                                     style={{ textDecoration: 'none' }}
                                 >
                                     Next →

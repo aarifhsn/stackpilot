@@ -43,7 +43,7 @@ export default function About({ settings }) {
                             )}
                         </div>
 
-                        <h3 className="mb-4 text-2xl leading-snug font-black text-slate-900 dark:text-white">
+                        <h3 className="mb-4 text-2xl leading-snug font-black text-slate-700 dark:text-white">
                             I build web apps that are ready for{' '}
                             <span className="text-gray-500">real users </span>
                             not just demos.
@@ -77,7 +77,7 @@ export default function About({ settings }) {
                                 href={settings.resume_url}
                                 target="_blank"
                                 rel="noreferrer"
-                                className="mt-8 inline-flex items-center gap-2 rounded-xl bg-slate-900 px-6 py-3 text-xs font-bold tracking-widest text-white uppercase transition-all hover:opacity-90 dark:bg-white dark:text-slate-900"
+                                className="mt-8 inline-flex items-center gap-2 rounded-xl bg-slate-900 px-6 py-3 text-xs font-bold tracking-widest text-white uppercase transition-all hover:opacity-90 dark:bg-white dark:text-slate-700"
                                 style={{ textDecoration: 'none' }}
                             >
                                 View Resume →
@@ -92,7 +92,7 @@ export default function About({ settings }) {
                             <p className="mb-2 text-[9px] font-bold tracking-widest text-slate-400 uppercase">
                                 Currently Focused On
                             </p>
-                            <p className="mb-5 text-lg font-black text-slate-900 dark:text-white">
+                            <p className="mb-5 text-lg font-black text-slate-700 dark:text-white">
                                 SaaS & Full-Stack Product Development
                             </p>
                             <div className="space-y-3">
@@ -132,7 +132,7 @@ export default function About({ settings }) {
                                                 : ''
                                         }
                                     >
-                                        <div className="text-2xl font-black text-slate-900 dark:text-white">
+                                        <div className="text-2xl font-black text-slate-700 dark:text-white">
                                             {s.num}
                                         </div>
                                         <div className="mt-1 text-[9px] font-bold tracking-widest text-slate-400 uppercase">
@@ -147,7 +147,7 @@ export default function About({ settings }) {
                         <div className="flex items-center gap-3 rounded-2xl border border-slate-100 bg-white px-5 py-4 shadow-sm dark:border-slate-800 dark:bg-slate-900">
                             <span className="flex-shrink-0 text-xl">🟢</span>
                             <div className="min-w-0 flex-1">
-                                <p className="text-sm font-bold text-slate-900 dark:text-white">
+                                <p className="text-sm font-bold text-slate-700 dark:text-white">
                                     Available for Freelance & Remote
                                 </p>
                                 <p className="mt-0.5 text-xs text-slate-400 dark:text-slate-500">

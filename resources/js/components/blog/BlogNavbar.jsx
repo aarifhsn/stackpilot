@@ -52,7 +52,7 @@ export default function BlogNavbar({ settings }) {
                 </a>
                 <a
                     href="/"
-                    className="text-xs font-bold tracking-widest text-slate-500 uppercase transition-colors hover:text-slate-800 dark:text-slate-400 dark:hover:text-white"
+                    className="text-xs font-bold tracking-widest text-slate-500 uppercase transition-colors hover:text-slate-700 dark:text-slate-400 dark:hover:text-white"
                     style={{ textDecoration: 'none' }}
                 >
                     ← Portfolio

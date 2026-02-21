@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useFadeIn } from '../../hooks/use-fadeIn';
+import ContactForm from './ContactForm';
 import SectionHeader from './SectionHeader';
 
 export default function Contact({ settings }) {
@@ -95,7 +96,7 @@ export default function Contact({ settings }) {
                                         {link.emoji}
                                     </div>
                                     <div>
-                                        <div className="max-w-[180px] truncate text-sm font-bold text-slate-800 dark:text-slate-100">
+                                        <div className="max-w-[180px] truncate text-sm font-bold text-slate-700 dark:text-slate-100">
                                             {link.label}
                                         </div>
                                         <div className="mt-0.5 text-xs text-slate-400 dark:text-slate-500">
@@ -111,7 +112,7 @@ export default function Contact({ settings }) {
                     <div className="flex flex-col items-start gap-3 rounded-2xl border border-slate-100 bg-slate-50 px-6 py-4 sm:flex-row sm:items-center dark:border-slate-700 dark:bg-slate-800">
                         <span className="text-xl">🟢</span>
                         <div className="flex-1">
-                            <p className="text-sm font-bold text-slate-900 dark:text-white">
+                            <p className="text-sm font-bold text-slate-700 dark:text-white">
                                 Currently available for new projects
                             </p>
                             <p className="mt-0.5 text-xs text-slate-400 dark:text-slate-500">
@@ -136,7 +137,7 @@ export default function Contact({ settings }) {
                     <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
                         {/* Contact form */}
                         <div className="rounded-2xl border border-slate-100 bg-slate-50 p-8 lg:col-span-2 dark:border-slate-700 dark:bg-slate-800">
-                            <h3 className="mb-1 text-lg font-bold text-slate-900 dark:text-white">
+                            <h3 className="mb-1 text-lg font-bold text-slate-700 dark:text-white">
                                 Send a Message
                             </h3>
                             <p className="mb-7 text-xs text-slate-400 dark:text-slate-500">
@@ -144,87 +145,12 @@ export default function Contact({ settings }) {
                                 within 24 hours.
                             </p>
 
-                            <form onSubmit={handleSubmit} className="space-y-4">
-                                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                                    <div>
-                                        <label className="mb-2 block text-xs font-bold tracking-widest text-slate-600 uppercase dark:text-slate-400">
-                                            Name
-                                        </label>
-                                        <input
-                                            type="text"
-                                            value={form.name}
-                                            onChange={(e) =>
-                                                setForm({
-                                                    ...form,
-                                                    name: e.target.value,
-                                                })
-                                            }
-                                            required
-                                            placeholder="Your name"
-                                            className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-800 placeholder-slate-400 transition-colors focus:border-gray-400 focus:outline-none dark:border-slate-600 dark:bg-slate-700 dark:text-white"
-                                        />
-                                    </div>
-                                    <div>
-                                        <label className="mb-2 block text-xs font-bold tracking-widest text-slate-600 uppercase dark:text-slate-400">
-                                            Email
-                                        </label>
-                                        <input
-                                            type="email"
-                                            value={form.email}
-                                            onChange={(e) =>
-                                                setForm({
-                                                    ...form,
-                                                    email: e.target.value,
-                                                })
-                                            }
-                                            required
-                                            placeholder="your@email.com"
-                                            className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-800 placeholder-slate-400 transition-colors focus:border-gray-400 focus:outline-none dark:border-slate-600 dark:bg-slate-700 dark:text-white"
-                                        />
-                                    </div>
-                                </div>
-                                <div>
-                                    <label className="mb-2 block text-xs font-bold tracking-widest text-slate-600 uppercase dark:text-slate-400">
-                                        Message
-                                    </label>
-                                    <textarea
-                                        value={form.message}
-                                        onChange={(e) =>
-                                            setForm({
-                                                ...form,
-                                                message: e.target.value,
-                                            })
-                                        }
-                                        required
-                                        rows={5}
-                                        placeholder="Tell me about your project..."
-                                        className="w-full resize-none rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-800 placeholder-slate-400 transition-colors focus:border-gray-400 focus:outline-none dark:border-slate-600 dark:bg-slate-700 dark:text-white"
-                                    />
-                                </div>
-
-                                <button
-                                    type="submit"
-                                    disabled={status === 'sending'}
-                                    className="w-full cursor-pointer rounded-xl border-0 bg-slate-900 py-3.5 text-sm font-bold tracking-widest text-white uppercase transition-all hover:bg-gray-400 hover:text-slate-900 disabled:opacity-60 dark:bg-white dark:text-slate-900"
-                                >
-                                    {status === 'sending'
-                                        ? 'Sending…'
-                                        : 'Send Message →'}
-                                </button>
-
-                                {status === 'success' && (
-                                    <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-4 text-center text-sm font-semibold text-emerald-700 dark:border-emerald-800 dark:bg-emerald-900/20 dark:text-emerald-400">
-                                        ✓ Message sent! I'll reply within 24
-                                        hours.
-                                    </div>
-                                )}
-                                {status === 'error' && (
-                                    <div className="rounded-xl border border-red-200 bg-red-50 p-4 text-center text-sm font-semibold text-red-600 dark:border-red-800 dark:bg-red-900/20 dark:text-red-400">
-                                        Something went wrong. Please email me
-                                        directly.
-                                    </div>
-                                )}
-                            </form>
+                            <ContactForm
+                                form={form}
+                                setForm={setForm}
+                                status={status}
+                                setStatus={setStatus}
+                            />
                         </div>
 
                         {/* Sidebar info */}

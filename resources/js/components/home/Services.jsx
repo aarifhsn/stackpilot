@@ -37,7 +37,7 @@ export default function Services({ services = [], settings }) {
                                         {service.icon}
                                     </div>
                                 )}
-                                <h3 className="text-base leading-snug font-bold text-slate-800 transition-colors group-hover:text-gray-600 dark:text-slate-100 dark:group-hover:text-gray-400">
+                                <h3 className="text-base leading-snug font-bold text-slate-700 transition-colors group-hover:text-gray-600 dark:text-slate-100 dark:group-hover:text-gray-400">
                                     {service.title}
                                 </h3>
                             </div>
@@ -99,7 +99,7 @@ export default function Services({ services = [], settings }) {
                                     <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-gray-50 text-xl dark:bg-gray-900/20">
                                         {s.icon}
                                     </div>
-                                    <h3 className="text-base leading-snug font-bold text-slate-800 transition-colors group-hover:text-gray-600 dark:text-slate-100 dark:group-hover:text-gray-400">
+                                    <h3 className="text-base leading-snug font-bold text-slate-700 transition-colors group-hover:text-gray-600 dark:text-slate-100 dark:group-hover:text-gray-400">
                                         {s.title}
                                     </h3>
                                 </div>
@@ -128,7 +128,7 @@ export default function Services({ services = [], settings }) {
                                         : ''
                                 }`}
                             >
-                                <div className="text-2xl font-black text-slate-900 dark:text-white">
+                                <div className="text-2xl font-black text-slate-700 dark:text-white">
                                     {s.num}
                                 </div>
                                 <div className="mt-1 text-[9px] font-bold tracking-widest text-slate-400 uppercase dark:text-slate-500">

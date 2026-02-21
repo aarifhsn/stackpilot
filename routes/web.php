@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Laravel\Fortify\Features;
@@ -17,7 +18,8 @@ Route::get('dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/', [PortfolioController::class, 'index'])->name('home');
-Route::post('/contact', [PortfolioController::class, 'contact'])->name('contact');
+// Route::post('/contact', [PortfolioController::class, 'contact'])->name('contact');
+Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
 
 // Blog
 Route::prefix('blog')->name('blog.')->group(function () {

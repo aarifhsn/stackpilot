@@ -43,7 +43,7 @@ export default function PortfolioCard({ project, reverse, visible, delay }) {
                             href={project.project_link}
                             target="_blank"
                             rel="noreferrer"
-                            className="transform rounded-xl bg-gray-400 px-6 py-3 text-sm font-bold tracking-wide text-slate-900 uppercase shadow-lg transition-all hover:scale-105 hover:bg-gray-500"
+                            className="transform rounded-xl bg-gray-400 px-6 py-3 text-sm font-bold tracking-wide text-slate-700 uppercase shadow-lg transition-all hover:scale-105 hover:bg-gray-500"
                             style={{ textDecoration: 'none' }}
                         >
                             View Project →
@@ -61,7 +61,7 @@ export default function PortfolioCard({ project, reverse, visible, delay }) {
                     </span>
                 )}
 
-                <h3 className="text-2xl leading-tight font-black text-slate-900 lg:text-3xl dark:text-white">
+                <h3 className="text-2xl leading-tight font-black text-slate-700 lg:text-3xl dark:text-white">
                     {project.title}
                 </h3>
 
