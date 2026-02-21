@@ -35,4 +35,8 @@ return [
         ],
     ],
 
+    'wp' => [
+        'url' => env('WP_API_URL', 'https://blog.arifhassan.com'),
+    ]
+
 ];

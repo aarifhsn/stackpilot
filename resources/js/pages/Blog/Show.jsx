@@ -1,56 +1,5 @@
 import { Head, Link } from '@inertiajs/react';
-
-function BlogNavbar({ settings }) {
-    return (
-        <header className="fixed top-0 left-0 z-50 w-full border-b border-slate-100 bg-white/95 backdrop-blur-md dark:border-slate-800 dark:bg-slate-900/95">
-            <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-6">
-                <Link
-                    href="/"
-                    className="flex items-center gap-3"
-                    style={{ textDecoration: 'none' }}
-                >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 48 48"
-                        width="32"
-                        height="32"
-                    >
-                        <rect width="48" height="48" rx="9" fill="#0F172A" />
-                        <polygon
-                            points="24,6 13,42 19,42 24,20"
-                            fill="#F59E0B"
-                        />
-                        <polygon
-                            points="24,6 35,42 29,42 24,20"
-                            fill="#F59E0B"
-                        />
-                        <rect
-                            x="14"
-                            y="28"
-                            width="20"
-                            height="3"
-                            rx="1.5"
-                            fill="#F59E0B"
-                        />
-                    </svg>
-                    <div className="text-sm font-black text-slate-800 dark:text-white">
-                        arif<span className="font-light">hassan</span>
-                        <span className="ml-2 text-xs font-bold tracking-widest text-gray-500 uppercase">
-                            Blog
-                        </span>
-                    </div>
-                </Link>
-                <Link
-                    href="/blog"
-                    className="text-xs font-bold tracking-widest text-slate-500 uppercase transition-colors hover:text-slate-800 dark:text-slate-400 dark:hover:text-white"
-                    style={{ textDecoration: 'none' }}
-                >
-                    ← All Posts
-                </Link>
-            </div>
-        </header>
-    );
-}
+import BlogNavbar from '../../components/blog/BlogNavbar';
 
 export default function BlogShow({ post, related, settings }) {
     return (
@@ -75,7 +24,7 @@ export default function BlogShow({ post, related, settings }) {
 
                 {/* Article */}
                 <article
-                    className={`mx-auto max-w-3xl px-6 ${post.featured_image ? 'pt-12' : 'pt-32'} pb-24`}
+                    className={`mx-auto max-w-3xl overflow-hidden px-6 ${post.featured_image ? 'pt-12' : 'pt-32'} pb-24`}
                 >
                     {/* Meta */}
                     <div className="mb-6 flex flex-wrap items-center gap-3">
@@ -101,7 +50,7 @@ export default function BlogShow({ post, related, settings }) {
 
                     {/* Content */}
                     <div
-                        className="prose prose-slate dark:prose-invert prose-lg prose-headings:font-black prose-headings:text-slate-800 dark:prose-headings:text-white prose-a:text-gray-600 dark:prose-a:text-gray-400 prose-a:no-underline hover:prose-a:underline prose-code:bg-slate-100 dark:prose-code:bg-slate-800 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-pre:bg-slate-900 dark:prose-pre:bg-slate-950 prose-pre:rounded-xl prose-img:rounded-xl prose-img:shadow-md prose-blockquote:border-gray-400 prose-blockquote:bg-gray-50 dark:prose-blockquote:bg-gray-900/10 prose-blockquote:py-1 prose-blockquote:px-4 prose-blockquote:rounded-r-xl max-w-none"
+                        className="prose prose-slate dark:prose-invert prose-lg prose-headings:font-black prose-headings:text-slate-900 dark:prose-headings:text-white prose-a:text-amber-600 dark:prose-a:text-amber-400 prose-a:no-underline hover:prose-a:underline prose-pre:bg-slate-900 dark:prose-pre:bg-slate-950 prose-pre:rounded-xl prose-pre:overflow-x-auto prose-code:bg-slate-100 dark:prose-code:bg-slate-800 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-code:break-words prose-img:rounded-xl prose-img:shadow-md prose-blockquote:border-amber-400 prose-blockquote:bg-amber-50 dark:prose-blockquote:bg-amber-900/10 prose-blockquote:py-1 prose-blockquote:px-4 prose-blockquote:rounded-r-xl max-w-none [&_.wp-block-kevinbatdorf-code-block-pro]:max-w-full [&_.wp-block-kevinbatdorf-code-block-pro]:overflow-x-auto [&_.wp-block-kevinbatdorf-code-block-pro]:rounded-xl [&_figure]:max-w-full [&_figure]:overflow-x-auto [&_pre]:max-w-full [&_pre]:overflow-x-auto"
                         dangerouslySetInnerHTML={{ __html: post.content }}
                     />
 
