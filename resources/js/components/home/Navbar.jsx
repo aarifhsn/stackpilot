@@ -18,7 +18,8 @@ export default function Navbar({ dark, setDark, settings }) {
         { label: 'About', id: 'about' },
         {
             label: 'Blog',
-            href: settings?.blog_url || '/blog',
+            // href: settings?.blog_url || '/blog', // redirect to wp site
+            href: '/blog',
         },
     ];
 
