@@ -92,11 +92,11 @@ export default function Contact({ settings }) {
                                     className="group flex items-center gap-4 rounded-2xl border border-slate-100 bg-slate-50 p-5 shadow-sm transition-all duration-300 hover:border-gray-400 hover:shadow-md dark:border-slate-700 dark:bg-slate-800 dark:hover:border-gray-500"
                                     style={{ textDecoration: 'none' }}
                                 >
-                                    <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-white text-2xl shadow-sm transition-transform duration-300 group-hover:scale-110 dark:bg-slate-700">
+                                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white text-2xl shadow-sm transition-transform duration-300 group-hover:scale-110 dark:bg-slate-700">
                                         {link.emoji}
                                     </div>
                                     <div>
-                                        <div className="max-w-[180px] truncate text-sm font-bold text-slate-700 dark:text-slate-100">
+                                        <div className="max-w-45 truncate text-sm font-bold text-slate-700 dark:text-slate-100">
                                             {link.label}
                                         </div>
                                         <div className="mt-0.5 text-xs text-slate-400 dark:text-slate-500">
@@ -125,7 +125,7 @@ export default function Contact({ settings }) {
                                 href={settings.github_url}
                                 target="_blank"
                                 rel="noreferrer"
-                                className="flex-shrink-0 rounded-xl border border-slate-200 px-4 py-2 text-xs font-bold text-slate-600 transition-all hover:border-gray-400 hover:text-gray-500 dark:border-slate-600 dark:text-slate-300"
+                                className="shrink-0 rounded-xl border border-slate-200 px-4 py-2 text-xs font-bold text-slate-600 transition-all hover:border-gray-400 hover:text-gray-500 dark:border-slate-600 dark:text-slate-300"
                                 style={{ textDecoration: 'none' }}
                             >
                                 GitHub →
@@ -204,9 +204,9 @@ export default function Contact({ settings }) {
                             )}
 
                             {settings?.map_url && (
-                                <div className="min-h-[200px] flex-1 overflow-hidden rounded-2xl border border-slate-100 dark:border-slate-700">
+                                <div className="min-h-50 flex-1 overflow-hidden rounded-2xl border border-slate-100 dark:border-slate-700">
                                     <iframe
-                                        className="h-full min-h-[200px] w-full"
+                                        className="h-full min-h-50 w-full"
                                         src={settings.map_url}
                                         style={{ border: 0 }}
                                         allowFullScreen=""
