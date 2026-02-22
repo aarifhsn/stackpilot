@@ -14,6 +14,7 @@ export default function Contact() {
         e.preventDefault();
 
         post('/contact', {
+            preserveScroll: true,
             onSuccess: () => {
                 reset();
             },

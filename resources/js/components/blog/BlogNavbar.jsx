@@ -46,7 +46,7 @@ export default function BlogNavbar({ settings }) {
                         </div>
                     </div>
 
-                    <span className="ml-3 font-semibold text-slate-400 dark:text-slate-500">
+                    <span className="ml-3 text-xs font-bold text-slate-400 dark:text-slate-500">
                         BLOG
                     </span>
                 </a>
