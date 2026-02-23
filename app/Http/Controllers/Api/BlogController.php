@@ -8,17 +8,17 @@ use Illuminate\Support\Facades\Http;
 
 class BlogController extends Controller
 {
-    public function index()
-    {
-        $response = Http::get(config('services.wp.url') . '/wp-json/wp/v2/posts');
+    // public function index()
+    // {
+    //     $response = Http::get(config('services.wp.url') . '/wp-json/wp/v2/posts');
 
-        return $response->json();
-    }
+    //     return $response->json();
+    // }
 
-    public function show($id)
-    {
-        $response = Http::get(config('services.wp.url') . "/wp-json/wp/v2/posts/$id");
+    // public function show($id)
+    // {
+    //     $response = Http::get(config('services.wp.url') . "/wp-json/wp/v2/posts/$id");
 
-        return $response->json();
-    }
+    //     return $response->json();
+    // }
 }
