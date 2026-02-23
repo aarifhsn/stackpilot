@@ -1,3 +1,4 @@
+import Footer from '@/components/home/Footer';
 import { Head, Link } from '@inertiajs/react';
 import BlogNavbar from '../../components/blog/BlogNavbar';
 
@@ -129,15 +130,7 @@ export default function BlogShow({ post, related, settings }) {
                     </div>
                 )}
 
-                <footer className="border-t border-slate-200 py-8 text-center text-xs text-slate-400 dark:border-slate-800 dark:text-slate-600">
-                    © {new Date().getFullYear()} Arif Hassan ·{' '}
-                    <a
-                        href="https://arifhassan.com"
-                        className="transition-colors hover:text-gray-500"
-                    >
-                        Portfolio
-                    </a>
-                </footer>
+                <Footer settings={settings} />
             </div>
         </>
     );
