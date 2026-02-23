@@ -4,6 +4,7 @@ import ContactForm from './ContactForm';
 import SectionHeader from './SectionHeader';
 
 export default function Contact({ settings }) {
+    console.log('CONTACT SETTINGS:', settings);
     const [form, setForm] = useState({ name: '', email: '', message: '' });
     const [status, setStatus] = useState(null); // null | "sending" | "success" | "error"
     const [ref, visible] = useFadeIn();

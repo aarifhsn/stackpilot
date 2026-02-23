@@ -3,18 +3,28 @@ import { useFadeIn } from '../../hooks/use-fadeIn';
 import PortfolioCard from './PortfolioCard';
 import SectionHeader from './SectionHeader';
 
+const INITIAL_LIMIT = 6;
+
 export default function Portfolio({ portfolios = [], settings }) {
-    // Collect unique categories from portfolio data
     const allCategories = [
         ...new Set(portfolios.map((p) => p.category).filter(Boolean)),
     ];
-    const [active, setActive] = useState(allCategories[0] || 'all');
+
+    const [active, setActive] = useState('all');
     const [ref, visible] = useFadeIn();
 
+    // Sort by sort_order ascending
+    const sorted = [...portfolios].sort(
+        (a, b) => (a.sort_order ?? 0) - (b.sort_order ?? 0),
+    );
+
+    // If "all" is selected, show only first 6. Otherwise show all of that category.
     const filtered =
         active === 'all'
-            ? portfolios
-            : portfolios.filter((p) => p.category === active);
+            ? sorted.slice(0, INITIAL_LIMIT)
+            : sorted.filter((p) => p.category === active);
+
+    const tabs = ['all', ...allCategories];
 
     return (
         <section
@@ -24,13 +34,17 @@ export default function Portfolio({ portfolios = [], settings }) {
             <div className="mx-auto max-w-6xl px-6 lg:px-8">
                 <SectionHeader
                     title={settings?.portfolio_title || 'Recent Projects'}
-                    subtitle={`${filtered.length} of ${portfolios.length} projects`}
+                    subtitle={
+                        active === 'all'
+                            ? `Showing ${filtered.length} of ${portfolios.length} projects`
+                            : `${filtered.length} of ${portfolios.length} projects`
+                    }
                 />
 
                 {/* Filter tabs */}
                 {allCategories.length > 0 && (
                     <div className="mb-12 flex flex-wrap justify-center gap-2">
-                        {allCategories.map((cat) => (
+                        {tabs.map((cat) => (
                             <button
                                 key={cat}
                                 onClick={() => setActive(cat)}
@@ -40,7 +54,7 @@ export default function Portfolio({ portfolios = [], settings }) {
                                         : 'border-slate-200 bg-transparent text-slate-500 hover:border-slate-400 dark:border-slate-700 dark:text-slate-400 dark:hover:border-slate-500'
                                 }`}
                             >
-                                {cat}
+                                {cat === 'all' ? 'All' : cat}
                             </button>
                         ))}
                     </div>
@@ -68,8 +82,8 @@ export default function Portfolio({ portfolios = [], settings }) {
                     )}
                 </div>
 
-                {/* View all link */}
-                {portfolios.length > 6 && (
+                {/* View all link — show when on "all" tab and there are more than 6 */}
+                {active === 'all' && portfolios.length > INITIAL_LIMIT && (
                     <div className="mt-16 flex justify-center">
                         <a
                             href="/portfolio"

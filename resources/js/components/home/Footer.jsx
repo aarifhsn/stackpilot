@@ -1,3 +1,5 @@
+import SocialIcon from './icons/SocialIcon';
+
 export default function Footer({ settings }) {
     const year = new Date().getFullYear();
     return (

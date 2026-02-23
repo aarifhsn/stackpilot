@@ -29,14 +29,23 @@ class PortfolioForm
                             ->required()
                             ->unique(ignoreRecord: true),
                         Select::make('category')
-                            ->options([
-                                'laravel' => 'Laravel',
-                                'wordpress' => 'WordPress',
-                                'react' => 'React',
-                                'nextjs' => 'Next.js',
-                                'saas' => 'SaaS',
+                            ->options(
+                                fn() => \App\Models\Portfolio::query()
+                                    ->whereNotNull('category')
+                                    ->distinct()
+                                    ->pluck('category', 'category')
+                                    ->toArray()
+                            )
+                            ->searchable()
+                            ->createOptionForm([
+                                TextInput::make('category')
+                                    ->label('New Category')
+                                    ->required(),
                             ])
-                            ->searchable(),
+                            ->createOptionUsing(function (array $data) {
+                                return $data['category'];
+                            })
+                            ->label('Category'),
                         TextInput::make('project_link')
                             ->url()
                             ->label('Live Project URL'),

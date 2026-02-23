@@ -11,6 +11,10 @@ export default function About({ settings }) {
         { label: 'CMS', value: 'WordPress Engineering' },
     ];
 
+    function scrollTo(id) {
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    }
+
     return (
         <section id="about" className="bg-slate-50 py-24 dark:bg-slate-950">
             <div className="mx-auto max-w-6xl px-6 lg:px-8">
@@ -62,7 +66,7 @@ export default function About({ settings }) {
                             ].map((item) => (
                                 <li
                                     key={item}
-                                    className="flex items-start gap-3 text-sm text-slate-500 dark:text-slate-400"
+                                    className="flex items-start gap-3 text-sm font-semibold text-slate-500 dark:text-slate-400"
                                 >
                                     <span className="mt-0.5 flex-shrink-0 font-bold text-emerald-500">
                                         ✓

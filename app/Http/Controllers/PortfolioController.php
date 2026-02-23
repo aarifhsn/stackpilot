@@ -37,34 +37,7 @@ class PortfolioController extends Controller
                 'content' => $s->content,
             ]);
 
-        // Build settings array from SiteSetting model
-        $keys = [
-            'site_title',
-            'meta_description',
-            'hero_greeting',
-            'hero_name',
-            'hero_content',
-            'about_content',
-            'resume_url',
-            'portfolio_title',
-            'service_title',
-            'service_subtitle',
-            'contact_title',
-            'github_url',
-            'linkedin_url',
-            'twitter_url',
-            'whatsapp_url',
-            'telegram_url',
-            'contact_email',
-            'contact_phone',
-            'contact_address',
-            'map_url',
-            'blog_url',
-        ];
-
-        $settings = SiteSetting::whereIn('key', $keys)
-            ->pluck('value', 'key')
-            ->toArray();
+        $settings = SiteSetting::all()->pluck('value', 'key')->toArray();
 
         return Inertia::render('Portfolio', [
             'portfolios' => $portfolios,

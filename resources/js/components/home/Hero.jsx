@@ -53,10 +53,14 @@ export default function Hero({ settings }) {
                         </span>
                     </div>
                     <div className="flex w-full flex-wrap gap-2">
-                        {visible.map((tech) => (
+                        {visible.map((tech, index) => (
                             <span
                                 key={tech}
-                                className="rounded-lg border border-gray-100 bg-gray-100 px-3 py-2 text-sm font-semibold whitespace-nowrap text-gray-700 transition-all duration-300 hover:bg-gradient-to-r hover:from-gray-50 hover:to-gray-200 dark:border-gray-700 dark:bg-transparent dark:text-slate-200 dark:hover:from-gray-800 dark:hover:to-gray-700"
+                                className={`rounded-lg border px-3 py-2 text-sm font-semibold whitespace-nowrap transition-all duration-300 ${
+                                    index < 2
+                                        ? 'border-gray-700 bg-gray-800 text-white dark:border-gray-200 dark:bg-gray-200 dark:text-black'
+                                        : 'border-gray-100 bg-gray-100 text-gray-700 hover:bg-gradient-to-r hover:from-gray-50 hover:to-gray-200 dark:border-gray-700 dark:bg-transparent dark:text-slate-200 dark:hover:from-gray-800 dark:hover:to-gray-700'
+                                }`}
                             >
                                 {tech}
                             </span>

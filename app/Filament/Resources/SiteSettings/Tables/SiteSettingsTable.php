@@ -2,8 +2,6 @@
 
 namespace App\Filament\Resources\SiteSettings\Tables;
 
-use Filament\Actions\BulkActionGroup;
-use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
@@ -15,26 +13,25 @@ class SiteSettingsTable
         return $table
             ->columns([
                 TextColumn::make('key')
-                    ->searchable(),
-                TextColumn::make('created_at')
-                    ->dateTime()
+                    ->searchable()
                     ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->width('280px')
+                    ->fontFamily('mono'),
+
+                TextColumn::make('value')
+                    ->limit(80)
+                    ->wrap()
+                    ->placeholder('— empty —'),
+
                 TextColumn::make('updated_at')
-                    ->dateTime()
+                    ->since()
                     ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->label('Last Updated'),
             ])
-            ->filters([
-                //
-            ])
+            ->defaultSort('key')
             ->recordActions([
                 EditAction::make(),
             ])
-            ->toolbarActions([
-                BulkActionGroup::make([
-                    DeleteBulkAction::make(),
-                ]),
-            ]);
+            ->paginated(false);
     }
 }

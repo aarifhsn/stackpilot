@@ -45,7 +45,11 @@ export default function Services({ services = [], settings }) {
                             <div className="border-t border-slate-50 dark:border-slate-800" />
 
                             <p className="text-sm leading-7 text-slate-500 dark:text-slate-400">
-                                {service.content}
+                                <div
+                                    dangerouslySetInnerHTML={{
+                                        __html: service.content,
+                                    }}
+                                />
                             </p>
                         </div>
                     ))}

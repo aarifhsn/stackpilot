@@ -15,10 +15,10 @@ class ServicesTable
     {
         return $table
             ->columns([
+                TextColumn::make('sort_order')->sortable(),
                 TextColumn::make('icon')->label(''),
                 TextColumn::make('title')->searchable(),
                 IconColumn::make('is_published')->boolean(),
-                TextColumn::make('sort_order')->sortable(),
             ])
             ->filters([
                 //
