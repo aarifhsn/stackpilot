@@ -14,9 +14,9 @@ export default function Navbar({ dark, setDark, settings }) {
     }, []);
 
     const navLinks = [
+        { label: 'About', id: 'about' },
         { label: 'Portfolio', id: 'portfolio' },
         { label: 'Services', id: 'service' },
-        { label: 'About', id: 'about' },
         {
             label: 'Blog',
             // href: settings?.blog_url || '/blog', // redirect to wp site
