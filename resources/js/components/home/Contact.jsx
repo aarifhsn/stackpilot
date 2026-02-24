@@ -90,7 +90,7 @@ export default function Contact({ settings }) {
                                     href={link.href}
                                     target="_blank"
                                     rel="noreferrer"
-                                    className="group flex items-center gap-4 rounded-2xl border border-slate-100 bg-slate-50 p-5 shadow-sm transition-all duration-300 hover:border-gray-400 hover:shadow-md dark:border-slate-700 dark:bg-slate-800 dark:hover:border-gray-500"
+                                    className="group flex items-center gap-4 rounded-2xl border border-slate-100 bg-white p-5 shadow-sm transition-all duration-300 hover:border-gray-400 hover:shadow-md dark:border-slate-700 dark:bg-slate-800 dark:hover:border-gray-500"
                                     style={{ textDecoration: 'none' }}
                                 >
                                     <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white text-2xl shadow-sm transition-transform duration-300 group-hover:scale-110 dark:bg-slate-700">
