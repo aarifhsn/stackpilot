@@ -30,10 +30,10 @@ class SiteSettingResource extends Resource
         return SiteSettingsTable::configure($table);
     }
 
-    // public static function canCreate(): bool
-    // {
-    //     return false;
-    // }
+    public static function canCreate(): bool
+    {
+        return false;
+    }
 
     public static function getPages(): array
     {
