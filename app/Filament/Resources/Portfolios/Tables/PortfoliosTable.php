@@ -23,7 +23,7 @@ class PortfoliosTable
                     ->disk('public')
                     ->width(80),
                 TextColumn::make('title')->searchable()->sortable(),
-                TextColumn::make('category')
+                TextColumn::make('category.name')->searchable()->sortable()
                     ->colors(['primary']),
                 IconColumn::make('is_published')
                     ->boolean()
