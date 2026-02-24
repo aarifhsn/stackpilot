@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Portfolios\Schemas;
 
+use App\Models\Category;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TagsInput;
@@ -28,24 +29,26 @@ class PortfolioForm
                         TextInput::make('slug')
                             ->required()
                             ->unique(ignoreRecord: true),
-                        Select::make('category')
-                            ->options(
-                                fn() => \App\Models\Portfolio::query()
-                                    ->whereNotNull('category')
-                                    ->distinct()
-                                    ->pluck('category', 'category')
-                                    ->toArray()
-                            )
+                        Select::make('category_id')
+                            ->label('Category')
+                            ->relationship('category', 'name')
                             ->searchable()
+                            ->preload()
                             ->createOptionForm([
-                                TextInput::make('category')
-                                    ->label('New Category')
-                                    ->required(),
+                                TextInput::make('name')
+                                    ->required()
+                                    ->live(onBlur: true)
+                                    ->afterStateUpdated(
+                                        fn($state, callable $set) =>
+                                        $set('slug', Str::slug($state))
+                                    ),
+
+                                TextInput::make('slug')->required(),
                             ])
                             ->createOptionUsing(function (array $data) {
-                                return $data['category'];
+                                return Category::create($data)->id;
                             })
-                            ->label('Category'),
+                            ->required(),
                         TextInput::make('project_link')
                             ->url()
                             ->label('Live Project URL'),

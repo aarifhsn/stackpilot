@@ -17,7 +17,7 @@ class Portfolio extends Model
         'project_link',
         'image',
         'features',
-        'category',
+        'category_id',
         'tech_stack',
         'is_published',
         'sort_order'
@@ -34,5 +34,10 @@ class Portfolio extends Model
         return $this->features
             ? array_map('trim', explode(',', $this->features))
             : [];
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 }

@@ -18,7 +18,10 @@ return new class extends Migration {
             $table->string('project_link')->nullable();
             $table->string('image')->nullable();
             $table->text('features')->nullable(); // comma-separated
-            $table->string('category')->nullable(); // laravel, wordpress, etc.
+            $table->foreignId('category_id')
+                ->nullable()
+                ->constrained()
+                ->nullOnDelete();
             $table->json('tech_stack')->nullable(); // ["React","Laravel"]
             $table->boolean('is_published')->default(true);
             $table->integer('sort_order')->default(0);

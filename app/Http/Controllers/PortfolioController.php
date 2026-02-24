@@ -22,7 +22,7 @@ class PortfolioController extends Controller
                 'description' => $p->description,
                 'image' => $p->image ? asset('storage/' . $p->image) : null,
                 'project_link' => $p->project_link,
-                'category' => $p->category,
+                'category' => $p->category?->name,
                 'tech_stack' => $p->tech_stack ?? [],
                 'features' => $p->features,
             ]);
