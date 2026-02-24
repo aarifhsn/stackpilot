@@ -21,7 +21,7 @@ export default function Services({ services = [], settings }) {
                     {services.map((service, i) => (
                         <div
                             key={service.id}
-                            className="group flex flex-col gap-4 rounded-2xl border border-slate-100 bg-white p-7 shadow-sm transition-all duration-300 hover:border-gray-300 hover:shadow-md dark:border-slate-800 dark:bg-slate-900 dark:hover:border-gray-700"
+                            className="group flex flex-col gap-4 rounded-2xl border border-gray-100 bg-white p-8 shadow-sm transition-all duration-300 hover:border-gray-400 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900 dark:hover:border-gray-700"
                             style={{
                                 opacity: visible ? 1 : 0,
                                 transform: visible
@@ -33,11 +33,11 @@ export default function Services({ services = [], settings }) {
                             {/* Icon + Title */}
                             <div className="flex items-center gap-4">
                                 {service.icon && (
-                                    <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-gray-50 text-xl dark:bg-gray-900/20">
+                                    <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-slate-100 text-lg text-slate-700 dark:bg-slate-700 dark:text-slate-200">
                                         {service.icon}
                                     </div>
                                 )}
-                                <h3 className="text-base leading-snug font-bold text-slate-700 transition-colors group-hover:text-gray-600 dark:text-slate-100 dark:group-hover:text-gray-400">
+                                <h3 className="text-lg leading-7 font-semibold text-slate-800 capitalize transition-colors group-hover:text-gray-600 dark:text-slate-100 dark:group-hover:text-gray-400">
                                     {service.title}
                                 </h3>
                             </div>
@@ -100,10 +100,10 @@ export default function Services({ services = [], settings }) {
                                 }}
                             >
                                 <div className="flex items-center gap-4">
-                                    <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-gray-50 text-xl dark:bg-gray-900/20">
+                                    <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-slate-100 text-lg text-slate-700 dark:bg-slate-700 dark:text-slate-200">
                                         {s.icon}
                                     </div>
-                                    <h3 className="text-base leading-snug font-bold text-slate-700 transition-colors group-hover:text-gray-600 dark:text-slate-100 dark:group-hover:text-gray-400">
+                                    <h3 className="text-lg leading-7 font-semibold text-slate-800 capitalize transition-colors group-hover:text-gray-600 dark:text-slate-100 dark:group-hover:text-gray-400">
                                         {s.title}
                                     </h3>
                                 </div>
@@ -132,7 +132,7 @@ export default function Services({ services = [], settings }) {
                                         : ''
                                 }`}
                             >
-                                <div className="text-2xl font-black text-slate-700 dark:text-white">
+                                <div className="text-2xl font-bold text-slate-700 dark:text-white">
                                     {s.num}
                                 </div>
                                 <div className="mt-1 text-[9px] font-bold tracking-widest text-slate-400 uppercase dark:text-slate-500">

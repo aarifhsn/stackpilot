@@ -61,7 +61,7 @@ export default function PortfolioCard({ project, reverse, visible, delay }) {
                     </span>
                 )}
 
-                <h3 className="text-2xl leading-tight font-black text-slate-700 lg:text-3xl dark:text-white">
+                <h3 className="text-2xl leading-tight font-bold text-slate-700 lg:text-3xl dark:text-white">
                     {project.title}
                 </h3>
 

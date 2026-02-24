@@ -45,13 +45,13 @@ export default function BlogShow({ post, related, settings }) {
                     </div>
 
                     {/* Title */}
-                    <h1 className="mb-8 text-3xl leading-tight font-black text-slate-700 md:text-5xl dark:text-white">
+                    <h1 className="mb-8 text-3xl leading-tight font-bold text-slate-700 md:text-5xl dark:text-white">
                         {post.title}
                     </h1>
 
                     {/* Content */}
                     <div
-                        className="prose prose-slate dark:prose-invert prose-lg prose-headings:font-black prose-headings:text-slate-700 dark:prose-headings:text-white prose-a:text-amber-600 dark:prose-a:text-amber-400 prose-a:no-underline hover:prose-a:underline prose-pre:bg-slate-900 dark:prose-pre:bg-slate-950 prose-pre:rounded-xl prose-pre:overflow-x-auto prose-code:bg-slate-100 dark:prose-code:bg-slate-800 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-code:break-words prose-img:rounded-xl prose-img:shadow-md prose-blockquote:border-amber-400 prose-blockquote:bg-amber-50 dark:prose-blockquote:bg-amber-900/10 prose-blockquote:py-1 prose-blockquote:px-4 prose-blockquote:rounded-r-xl flex max-w-none flex-col gap-y-4 [&_.wp-block-kevinbatdorf-code-block-pro]:max-w-full [&_.wp-block-kevinbatdorf-code-block-pro]:overflow-x-auto [&_.wp-block-kevinbatdorf-code-block-pro]:rounded-xl [&_figure]:max-w-full [&_figure]:overflow-x-auto [&_pre]:max-w-full [&_pre]:overflow-x-auto"
+                        className="prose prose-slate dark:prose-invert prose-lg prose-headings:font-bold prose-headings:text-slate-700 dark:prose-headings:text-white prose-a:text-amber-600 dark:prose-a:text-amber-400 prose-a:no-underline hover:prose-a:underline prose-pre:bg-slate-900 dark:prose-pre:bg-slate-950 prose-pre:rounded-xl prose-pre:overflow-x-auto prose-code:bg-slate-100 dark:prose-code:bg-slate-800 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-code:break-words prose-img:rounded-xl prose-img:shadow-md prose-blockquote:border-amber-400 prose-blockquote:bg-amber-50 dark:prose-blockquote:bg-amber-900/10 prose-blockquote:py-1 prose-blockquote:px-4 prose-blockquote:rounded-r-xl flex max-w-none flex-col gap-y-4 [&_.wp-block-kevinbatdorf-code-block-pro]:max-w-full [&_.wp-block-kevinbatdorf-code-block-pro]:overflow-x-auto [&_.wp-block-kevinbatdorf-code-block-pro]:rounded-xl [&_figure]:max-w-full [&_figure]:overflow-x-auto [&_pre]:max-w-full [&_pre]:overflow-x-auto"
                         dangerouslySetInnerHTML={{ __html: post.content }}
                     />
 

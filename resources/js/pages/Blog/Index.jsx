@@ -93,7 +93,7 @@ export default function BlogIndex({
                     <p className="mb-3 text-xs font-bold tracking-widest text-gray-500 uppercase">
                         Writing & Thoughts
                     </p>
-                    <h1 className="mb-4 text-5xl font-black text-slate-700 dark:text-white">
+                    <h1 className="mb-4 text-5xl font-bold text-slate-700 dark:text-white">
                         The Blog
                     </h1>
                     <p className="mx-auto max-w-md text-sm leading-7 text-slate-400 dark:text-slate-500">

@@ -1,7 +1,7 @@
 export default function SectionHeader({ title, subtitle }) {
     return (
         <div className="mb-16 text-center">
-            <h2 className="mb-3 text-5xl font-black tracking-tight text-slate-700 uppercase dark:text-white">
+            <h2 className="mb-3 text-5xl font-bold tracking-tight text-slate-700 uppercase dark:text-white">
                 {title}
             </h2>
             {subtitle && (

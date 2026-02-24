@@ -107,7 +107,7 @@ export default function Hero({ settings }) {
                         { num: '100%', label: 'Remote Ready' },
                     ].map((s) => (
                         <div key={s.label}>
-                            <div className="text-3xl font-black text-slate-700 dark:text-white">
+                            <div className="text-3xl font-bold text-slate-700 dark:text-white">
                                 {s.num}
                             </div>
                             <div className="mt-1 text-xs font-semibold tracking-widest text-slate-400 uppercase dark:text-slate-500">

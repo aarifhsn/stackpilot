@@ -38,7 +38,7 @@ export default function BlogNavbar({ settings }) {
                         </svg>
                     </div>
                     <div>
-                        <div className="text-[15px] leading-none font-black tracking-widest text-slate-500 dark:text-white">
+                        <div className="text-[15px] leading-none font-bold tracking-widest text-slate-500 dark:text-white">
                             arif<span className="font-light"> hassan</span>
                         </div>
                         <div className="mt-0.5 text-[9px] font-bold tracking-[0.25em] text-slate-400 uppercase">

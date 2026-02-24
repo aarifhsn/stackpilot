@@ -47,13 +47,13 @@ export default function About({ settings }) {
                             )}
                         </div>
 
-                        <h3 className="mb-4 text-2xl leading-snug font-black text-slate-700 dark:text-white">
+                        <h3 className="mb-4 text-2xl leading-snug font-bold text-slate-800 md:text-3xl dark:text-white">
                             I build web apps that are ready for{' '}
                             <span className="text-gray-500">real users </span>
                             not just demos.
                         </h3>
 
-                        <p className="mb-6 text-sm leading-8 text-slate-500 dark:text-slate-400">
+                        <p className="mb-6 text-sm leading-7 text-slate-500 dark:text-slate-400">
                             {settings?.about_content ||
                                 'I help startups and growing businesses turn ideas into fast, reliable web applications. My core stack is Laravel + React for SaaS platforms, dashboards, and API-driven systems, with 6+ years of hands-on experience shipping production-ready solutions using Next.js, GraphQL, Docker, and WordPress.'}
                         </p>
@@ -66,7 +66,7 @@ export default function About({ settings }) {
                             ].map((item) => (
                                 <li
                                     key={item}
-                                    className="flex items-start gap-3 text-sm font-semibold text-slate-500 dark:text-slate-400"
+                                    className="flex items-start gap-3 text-sm text-slate-500 dark:text-slate-400"
                                 >
                                     <span className="mt-0.5 flex-shrink-0 font-bold text-emerald-500">
                                         ✓
@@ -96,7 +96,7 @@ export default function About({ settings }) {
                             <p className="mb-2 text-[9px] font-bold tracking-widest text-slate-400 uppercase">
                                 Currently Focused On
                             </p>
-                            <p className="mb-5 text-lg font-black text-slate-700 dark:text-white">
+                            <p className="mb-5 text-xl font-bold text-slate-800 dark:text-white">
                                 SaaS & Full-Stack Product Development
                             </p>
                             <div className="space-y-3">
@@ -112,7 +112,7 @@ export default function About({ settings }) {
                                         <span className="font-medium text-slate-400 dark:text-slate-500">
                                             {s.label}
                                         </span>
-                                        <span className="text-right text-xs font-bold text-slate-700 dark:text-slate-200">
+                                        <span className="text-right text-sm font-semibold text-slate-700 dark:text-slate-200">
                                             {s.value}
                                         </span>
                                     </div>
@@ -136,7 +136,7 @@ export default function About({ settings }) {
                                                 : ''
                                         }
                                     >
-                                        <div className="text-2xl font-black text-slate-700 dark:text-white">
+                                        <div className="text-2xl font-bold text-slate-700 dark:text-white">
                                             {s.num}
                                         </div>
                                         <div className="mt-1 text-[9px] font-bold tracking-widest text-slate-400 uppercase">
