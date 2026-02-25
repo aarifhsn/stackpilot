@@ -18,7 +18,7 @@ Route::get('dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/', [PortfolioController::class, 'index'])->name('home');
-// Route::post('/contact', [PortfolioController::class, 'contact'])->name('contact');
+Route::get('/portfolios', [PortfolioController::class, 'all'])->name('portfolios');
 Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
 
 // Blog

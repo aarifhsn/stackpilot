@@ -86,7 +86,7 @@ export default function Portfolio({ portfolios = [], settings }) {
                 {active === 'all' && portfolios.length > INITIAL_LIMIT && (
                     <div className="mt-16 flex justify-center">
                         <a
-                            href="/portfolio"
+                            href="/portfolios"
                             className="group inline-flex transform items-center gap-3 rounded-xl bg-slate-900 px-8 py-4 text-xs font-bold tracking-widest text-white uppercase shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-400 hover:text-slate-700 dark:bg-slate-700 hover:dark:bg-gray-400"
                             style={{ textDecoration: 'none' }}
                         >

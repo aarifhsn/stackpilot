@@ -38,7 +38,7 @@ function useDarkMode() {
     return [dark, setDark];
 }
 
-export default function PortfolioPage({
+export default function HomePage({
     portfolios = [],
     services = [],
     settings = {},

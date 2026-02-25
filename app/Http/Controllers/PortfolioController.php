@@ -39,9 +39,36 @@ class PortfolioController extends Controller
 
         $settings = SiteSetting::all()->pluck('value', 'key')->toArray();
 
-        return Inertia::render('Portfolio', [
+        return Inertia::render('Home', [
             'portfolios' => $portfolios,
             'services' => $services,
+            'settings' => $settings,
+        ]);
+    }
+
+    public function all()
+    {
+        $portfolios = Portfolio::where('is_published', true)
+            ->orderBy('sort_order')
+            ->orderByDesc('created_at')
+            ->with('category')
+            ->get()
+            ->map(fn($p) => [
+                'id' => $p->id,
+                'title' => $p->title,
+                'slug' => $p->slug,
+                'description' => $p->description,
+                'image' => $p->image ? asset('storage/' . $p->image) : null,
+                'project_link' => $p->project_link,
+                'category' => $p->category?->name,
+                'tech_stack' => $p->tech_stack ?? [],
+                'features' => $p->features,
+            ]);
+
+        $settings = SiteSetting::all()->pluck('value', 'key')->toArray();
+
+        return Inertia::render('Portfolios', [
+            'portfolios' => $portfolios,
             'settings' => $settings,
         ]);
     }
