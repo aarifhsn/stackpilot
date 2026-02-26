@@ -8,7 +8,7 @@
     {{-- Inline script to detect system dark mode preference and apply it immediately --}}
     <script>
         (function () {
-            const stored = localStorage.getItem('theme'); // ← was 'darkMode', now 'theme'
+            const stored = localStorage.getItem('theme');
             if (stored === 'dark') {
                 document.documentElement.classList.add('dark');
             } else if (stored === 'light') {

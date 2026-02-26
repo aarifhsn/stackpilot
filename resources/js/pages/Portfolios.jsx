@@ -1,10 +1,21 @@
 import { Head, Link } from '@inertiajs/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useFadeIn } from '../hooks/use-fadeIn';
 
 export default function Portfolios({ portfolios, settings }) {
     const [ref, visible] = useFadeIn();
     const [active, setActive] = useState('All');
+
+    // Sync dark class from localStorage on every page mount
+    useEffect(() => {
+        const stored = localStorage.getItem('theme');
+        if (stored) {
+            document.documentElement.classList.toggle(
+                'dark',
+                stored === 'dark',
+            );
+        }
+    }, []);
 
     // Build category list from portfolio data
     const categories = [

@@ -23,7 +23,7 @@ function useDarkMode() {
     });
 
     useEffect(() => {
-        const root = document.documentElement; // ← always target html element
+        const root = document.documentElement;
         root.classList.toggle('dark', dark);
         localStorage.setItem('theme', dark ? 'dark' : 'light');
     }, [dark]);
