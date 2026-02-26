@@ -155,7 +155,18 @@ export default function Navbar({ dark, setDark, settings }) {
 
                     {/* Dark toggle */}
                     <button
-                        onClick={() => setDark(!dark)}
+                        onClick={() => {
+                            const next = !dark;
+                            setDark(next);
+                            localStorage.setItem(
+                                'theme',
+                                next ? 'dark' : 'light',
+                            );
+                            document.documentElement.classList.toggle(
+                                'dark',
+                                next,
+                            );
+                        }}
                         className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white text-base transition-all hover:shadow-md dark:border-slate-700 dark:bg-slate-800"
                     >
                         {dark ? '🔆' : '🌙'}
@@ -165,7 +176,18 @@ export default function Navbar({ dark, setDark, settings }) {
                 {/* Mobile hamburger */}
                 <div className="flex items-center gap-2 lg:hidden">
                     <button
-                        onClick={() => setDark(!dark)}
+                        onClick={() => {
+                            const next = !dark;
+                            setDark(next);
+                            localStorage.setItem(
+                                'theme',
+                                next ? 'dark' : 'light',
+                            );
+                            document.documentElement.classList.toggle(
+                                'dark',
+                                next,
+                            );
+                        }}
                         className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white text-base dark:border-slate-700 dark:bg-slate-800"
                     >
                         {dark ? '🔆' : '🌙'}

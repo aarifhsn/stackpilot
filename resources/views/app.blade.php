@@ -8,12 +8,13 @@
     {{-- Inline script to detect system dark mode preference and apply it immediately --}}
     <script>
         (function () {
-            const appearance = '{{ $appearance ?? "system" }}';
-
-            if (appearance === 'system') {
-                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-                if (prefersDark) {
+            const stored = localStorage.getItem('theme'); // ← was 'darkMode', now 'theme'
+            if (stored === 'dark') {
+                document.documentElement.classList.add('dark');
+            } else if (stored === 'light') {
+                document.documentElement.classList.remove('dark');
+            } else {
+                if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
                     document.documentElement.classList.add('dark');
                 }
             }
