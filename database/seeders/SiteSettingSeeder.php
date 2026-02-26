@@ -14,6 +14,7 @@ class SiteSettingSeeder extends Seeder
             'meta_description' => 'Laravel, React & WordPress developer available for remote work.',
             'hero_greeting' => "Hi, I'm Arif Hassan",
             'hero_name' => 'Laravel + React Developer',
+            'hero_subtitle' => 'Building web applications ready for real users, not just demos.',
             'hero_content' => 'I help startups and businesses build fast, reliable web apps. Specialising in Laravel + React SaaS platforms, API-driven systems, and WordPress engineering — shipped and production-ready.',
             'about_content' => '',
             'resume_url' => '',

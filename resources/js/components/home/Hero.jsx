@@ -37,6 +37,10 @@ export default function Hero({ settings }) {
                     <span className="relative mt-6 block">
                         {settings?.hero_name || 'Laravel + React Developer'}
                     </span>
+                    <span className="mt-4 block text-lg font-medium text-slate-500 md:text-xl 2xl:text-2xl dark:text-gray-400">
+                        {settings?.hero_subtitle ||
+                            'Building web applications ready for real users, not just demos.'}
+                    </span>
                 </h2>
 
                 {/* Description */}

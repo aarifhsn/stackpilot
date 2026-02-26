@@ -6,11 +6,14 @@ use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Pages\Page;
 use Filament\Schemas\Components\Section;
+use Filament\Actions\Action;
+use BackedEnum;
+use Filament\Schemas\Schema;
 
 class ManageSettings extends Page
 {
     protected string $view = 'filament.pages.manage-settings';
-    // protected static ?string $navigationIcon = 'heroicon-o-cog-6-tooth';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-cog-6-tooth';
     protected static ?string $navigationLabel = 'Site Settings';
     protected static ?int $navigationSort = 99;
 
@@ -23,6 +26,7 @@ class ManageSettings extends Page
             'meta_description',
             'hero_greeting',
             'hero_name',
+            'hero_subtitle',
             'hero_content',
             'about_content',
             'resume_url',
@@ -45,13 +49,24 @@ class ManageSettings extends Page
         foreach ($keys as $key) {
             $this->settings[$key] = \App\Models\SiteSetting::get($key, '');
         }
+
+        $this->form->fill($this->settings);
     }
 
     public function save(): void
     {
-        foreach ($this->settings as $key => $value) {
-            \App\Models\SiteSetting::set($key, $value);
+        $data = $this->form->getState();
+
+        foreach ($data as $key => $value) {
+            \App\Models\SiteSetting::set($key, $value ?? '');
         }
+
+        // Reload settings back into the form
+        foreach (array_keys($data) as $key) {
+            $this->settings[$key] = \App\Models\SiteSetting::get($key, '');
+        }
+
+        $this->form->fill($this->settings);
 
         \Filament\Notifications\Notification::make()
             ->title('Settings saved!')
@@ -59,52 +74,65 @@ class ManageSettings extends Page
             ->send();
     }
 
-    protected function getFormSchema(): array
+    public function form(Schema $form): Schema
     {
-        return [
-            Section::make('SEO')->schema([
-                TextInput::make('settings.site_title')->label('Site Title'),
-                Textarea::make('settings.meta_description')->label('Meta Description')->rows(2),
-            ])->columns(1),
+        return $form
+            ->statePath('settings')
+            ->components([
+                Section::make('SEO')->schema([
+                    TextInput::make('site_title')->label('Site Title'),
+                    Textarea::make('meta_description')->label('Meta Description')->rows(2),
+                ])->columns(1),
 
-            Section::make('Hero Section')->schema([
-                TextInput::make('settings.hero_greeting')->label('Greeting (e.g. Hi, I\'m)'),
-                TextInput::make('settings.hero_name')->label('Your Name'),
-                Textarea::make('settings.hero_content')->label('Hero Description')->rows(3),
-            ]),
+                Section::make('Hero Section')->schema([
+                    TextInput::make('hero_greeting')->label('Greeting (e.g. Hi, I\'m)'),
+                    TextInput::make('hero_name')->label('Your Name'),
+                    TextInput::make('hero_subtitle')->label('Subtitle'),
+                    Textarea::make('hero_content')->label('Hero Description')->rows(3),
+                ]),
 
-            Section::make('About Section')->schema([
-                Textarea::make('settings.about_content')->rows(4)->label('About Text'),
-                TextInput::make('settings.resume_url')->label('Resume URL')->url(),
-            ]),
+                Section::make('About Section')->schema([
+                    Textarea::make('about_content')->rows(4)->label('About Text'),
+                    TextInput::make('resume_url')->label('Resume URL')->url(),
+                ]),
 
-            Section::make('Section Titles')->schema([
-                TextInput::make('settings.portfolio_title'),
-                TextInput::make('settings.service_title'),
-                TextInput::make('settings.service_subtitle'),
-                TextInput::make('settings.contact_title'),
-            ])->columns(2),
+                Section::make('Section Titles')->schema([
+                    TextInput::make('portfolio_title'),
+                    TextInput::make('service_title'),
+                    TextInput::make('service_subtitle'),
+                    TextInput::make('contact_title'),
+                ])->columns(2),
 
-            Section::make('Social Links')->schema([
-                TextInput::make('settings.github_url')->label('GitHub')->url(),
-                TextInput::make('settings.linkedin_url')->label('LinkedIn')->url(),
-                TextInput::make('settings.twitter_url')->label('Twitter/X')->url(),
-                TextInput::make('settings.blog_url')->label('Blog URL')->url(),
-            ])->columns(2),
+                Section::make('Social Links')->schema([
+                    TextInput::make('github_url')->label('GitHub')->url(),
+                    TextInput::make('linkedin_url')->label('LinkedIn')->url(),
+                    TextInput::make('twitter_url')->label('Twitter/X')->url(),
+                    TextInput::make('blog_url')->label('Blog URL')->url(),
+                ])->columns(2),
 
-            Section::make('Contact Info')->schema([
-                TextInput::make('settings.whatsapp_url')->label('WhatsApp Number'),
-                TextInput::make('settings.telegram_url')->label('Telegram URL')->url(),
-                TextInput::make('settings.contact_email')->label('Email')->email(),
-                TextInput::make('settings.contact_phone')->label('Phone'),
-                TextInput::make('settings.contact_address')->label('Address'),
-                TextInput::make('settings.map_url')->label('Google Maps Embed URL')->url(),
-            ])->columns(2),
-        ];
+                Section::make('Contact Info')->schema([
+                    TextInput::make('whatsapp_url')->label('WhatsApp Number'),
+                    TextInput::make('telegram_url')->label('Telegram URL')->url(),
+                    TextInput::make('contact_email')->label('Email')->email(),
+                    TextInput::make('contact_phone')->label('Phone'),
+                    TextInput::make('contact_address')->label('Address'),
+                    TextInput::make('map_url')->label('Google Maps Embed URL')->url(),
+                ])->columns(2),
+            ]);
     }
-
     public function getTitle(): string
     {
         return 'Site Settings';
     }
+
+
+    protected function getFormActions(): array
+    {
+        return [
+            Action::make('save')
+                ->label('Save Settings')
+                ->submit('save'),
+        ];
+    }
+
 }
