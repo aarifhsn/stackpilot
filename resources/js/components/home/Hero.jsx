@@ -34,7 +34,7 @@ export default function Hero({ settings }) {
                     <span className="block text-xl text-slate-500 md:text-2xl 2xl:text-4xl">
                         {settings?.hero_greeting || "Hi, I'm Arif Hassan"}
                     </span>
-                    <span className="relative mt-6 block">
+                    <span className="relative mt-6 block leading-20">
                         {settings?.hero_name || 'Laravel + React Developer'}
                     </span>
                     <span className="mt-4 block text-lg font-medium text-slate-500 md:text-xl 2xl:text-2xl dark:text-gray-400">

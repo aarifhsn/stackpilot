@@ -5,10 +5,18 @@ export default function About({ settings }) {
     const [ref, visible] = useFadeIn();
 
     const skills = [
-        { label: 'Backend', value: 'Laravel, REST APIs, GraphQL' },
-        { label: 'Frontend', value: 'React, Next.js, Tailwind' },
-        { label: 'DevOps', value: 'Docker, Deployments, CI/CD' },
-        { label: 'CMS', value: 'WordPress Engineering' },
+        {
+            label: 'SaaS & Dashboards',
+            value: 'Building internal tools and client-facing platforms',
+        },
+        {
+            label: 'API-Driven Systems',
+            value: 'REST APIs, authentication flows, third-party integrations',
+        },
+        {
+            label: 'Modern Full-Stack',
+            value: 'Laravel + React with clean, maintainable structure',
+        },
     ];
 
     function scrollTo(id) {
@@ -48,21 +56,20 @@ export default function About({ settings }) {
                         </div>
 
                         <h3 className="mb-4 text-2xl leading-snug font-bold text-slate-800 md:text-3xl dark:text-white">
-                            I build web apps that are ready for{' '}
-                            <span className="text-gray-500">real users </span>
-                            not just demos.
+                            From Idea to Production-Ready Systems
                         </h3>
 
                         <p className="mb-6 text-sm leading-7 text-slate-500 dark:text-slate-400">
                             {settings?.about_content ||
-                                'I help startups and growing businesses turn ideas into fast, reliable web applications. My core stack is Laravel + React for SaaS platforms, dashboards, and API-driven systems, with 6+ years of hands-on experience shipping production-ready solutions using Next.js, GraphQL, Docker, and WordPress.'}
+                                'I specialize in building real-world applications that scale beyond MVPs. My experience spans freelance client work, commercial WordPress products, and modern full-stack development with Laravel, React, and Next.js.'}
                         </p>
 
                         <ul className="space-y-3">
                             {[
-                                'Clean, maintainable architecture built to scale with your product',
-                                'SaaS platforms, internal dashboards, and client-facing web apps',
-                                'API integrations, performance tuning, and full deployment setup',
+                                'SaaS platforms and internal tools',
+                                'Clean architecture built for long-term growth',
+                                'API integrations and performance optimization',
+                                'Deployment-ready systems (Docker, CI/CD)',
                             ].map((item) => (
                                 <li
                                     key={item}
@@ -94,16 +101,16 @@ export default function About({ settings }) {
                         {/* Currently focused */}
                         <div className="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
                             <p className="mb-2 text-[9px] font-bold tracking-widest text-slate-400 uppercase">
-                                Currently Focused On
+                                Core Expertise
                             </p>
                             <p className="mb-5 text-xl font-bold text-slate-800 dark:text-white">
-                                SaaS & Full-Stack Product Development
+                                What I Focus On
                             </p>
                             <div className="space-y-3">
                                 {skills.map((s, i) => (
                                     <div
                                         key={s.label}
-                                        className={`flex items-center justify-between py-3 text-sm ${
+                                        className={`flex items-center justify-between gap-8 py-3 text-sm ${
                                             i < skills.length - 1
                                                 ? 'border-b border-slate-100 dark:border-slate-800'
                                                 : ''
@@ -112,7 +119,7 @@ export default function About({ settings }) {
                                         <span className="font-medium text-slate-400 dark:text-slate-500">
                                             {s.label}
                                         </span>
-                                        <span className="text-right text-sm font-semibold text-slate-700 dark:text-slate-200">
+                                        <span className="text-right text-sm font-semibold text-slate-500 dark:text-slate-200">
                                             {s.value}
                                         </span>
                                     </div>
