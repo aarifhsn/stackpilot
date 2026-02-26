@@ -9,7 +9,10 @@ export function useFadeIn() {
             ([entry]) => {
                 if (entry.isIntersecting) setVisible(true);
             },
-            { threshold: 0.1 },
+            {
+                threshold: 0, // trigger as soon as 1px is visible
+                rootMargin: '0px 0px -50px 0px', // trigger 50px before it enters viewport
+            },
         );
         if (ref.current) observer.observe(ref.current);
         return () => observer.disconnect();
