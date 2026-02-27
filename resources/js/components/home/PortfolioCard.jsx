@@ -61,9 +61,14 @@ export default function PortfolioCard({ project, reverse, visible, delay }) {
                     </span>
                 )}
 
-                <h3 className="text-2xl leading-tight font-bold text-slate-700 lg:text-3xl dark:text-white">
+                <a
+                    href={project.project_link}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="block text-2xl leading-tight font-bold text-slate-700 lg:text-3xl dark:text-white"
+                >
                     {project.title}
-                </h3>
+                </a>
 
                 {project.description && (
                     <p className="text-sm leading-7 text-slate-500 dark:text-slate-400">
