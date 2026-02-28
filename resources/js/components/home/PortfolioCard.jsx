@@ -38,13 +38,12 @@ export default function PortfolioCard({ project, reverse, visible, delay }) {
 
                 {/* Hover overlay */}
                 {project.project_link && (
-                    <div className="absolute inset-0 flex items-center justify-center bg-slate-900/80 opacity-0 backdrop-blur-sm transition-all duration-300 group-hover:opacity-100">
+                    <div className="absolute inset-0 flex items-center justify-center bg-slate-900/30 opacity-100 transition-all duration-300 lg:opacity-0 lg:group-hover:opacity-100">
                         <a
                             href={project.project_link}
                             target="_blank"
                             rel="noreferrer"
-                            className="transform rounded-xl bg-gray-400 px-6 py-3 text-sm font-bold tracking-wide text-slate-700 uppercase shadow-lg transition-all hover:scale-105 hover:bg-gray-500"
-                            style={{ textDecoration: 'none' }}
+                            className="rounded-xl border border-slate-300 bg-transparent px-6 py-3 text-sm font-bold tracking-wide text-slate-100 uppercase shadow-xs backdrop-blur-sm transition-all hover:scale-105 hover:bg-gray-500"
                         >
                             View Project →
                         </a>
