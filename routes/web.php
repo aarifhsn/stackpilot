@@ -19,7 +19,7 @@ Route::get('dashboard', function () {
 
 Route::get('/', [PortfolioController::class, 'index'])->name('home');
 Route::get('/portfolios', [PortfolioController::class, 'all'])->name('portfolios');
-Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
+Route::post('/contact', [ContactController::class, 'send'])->name('contact.send')->middleware('throttle:5,1');
 
 // Blog
 Route::prefix('blog')->name('blog.')->group(function () {
