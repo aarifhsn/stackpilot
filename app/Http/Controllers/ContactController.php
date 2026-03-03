@@ -33,7 +33,7 @@ class ContactController extends Controller
             'message' => 'required|string|min:10',
         ]);
 
-        Mail::to('you@yourdomain.com')->send(new ContactMail($data));
+        Mail::to('info@arifhassan.com')->send(new ContactMail($data));
 
         return back()->with('success', 'Message sent successfully!');
     }
