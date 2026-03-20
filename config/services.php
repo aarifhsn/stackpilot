@@ -37,6 +37,9 @@ return [
 
     'wp' => [
         'url' => env('WP_API_URL', 'https://blog.arifhassan.com'),
-    ]
+    ],
+    'brevo' => [
+        'key' => env('BREVO_KEY'),
+    ],
 
 ];

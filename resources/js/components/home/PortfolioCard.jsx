@@ -27,6 +27,7 @@ export default function PortfolioCard({ project, reverse, visible, delay }) {
                 {project.image ? (
                     <img
                         src={project.image}
+                        loading="lazy"
                         alt={project.title}
                         className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
