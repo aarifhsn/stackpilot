@@ -5,6 +5,19 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- Preconnect for faster connection -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Non-blocking Google Fonts with swap -->
+    <link rel="preload"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" as="style"
+        onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+            rel="stylesheet">
+    </noscript>
+
     {{-- Inline script to detect system dark mode preference and apply it immediately --}}
     <script>
         (function () {
