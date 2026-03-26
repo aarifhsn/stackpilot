@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\Widgets;
+namespace App\Filament\Resources\Portfolios\Widgets;
 
 use App\Models\Portfolio;
 use App\Models\Service;
