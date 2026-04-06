@@ -47,9 +47,11 @@
 
     <title inertia>{{ config('app.name', 'Laravel') }}</title>
 
-    <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
-    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
-    <link rel="apple-touch-icon" href="{{ asset('apple-touch-icon.png') }}">
+    <!-- Favicon - Put these as early as possible -->
+    <link rel="icon" href="{{ asset('favicon.ico') }}?v=3" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}?v=3" type="image/x-icon">
+    <link rel="icon" href="{{ asset('favicon.png') }}?v=3" type="image/png" sizes="32x32">
+    <link rel="apple-touch-icon" href="{{ asset('apple-touch-icon.png') }}?v=3">
 
     @viteReactRefresh
     @vite(['resources/js/app.tsx', "resources/js/pages/{$page['component']}.jsx"])
