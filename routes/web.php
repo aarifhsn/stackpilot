@@ -6,6 +6,7 @@ use Inertia\Inertia;
 use Laravel\Fortify\Features;
 
 use App\Http\Controllers\PortfolioController;
+use App\Http\Controllers\ProblemSolutionController;
 
 // Route::get('/', function () {
 //     return Inertia::render('welcome', [
@@ -25,6 +26,11 @@ Route::post('/contact', [ContactController::class, 'send'])->name('contact.send'
 Route::prefix('blog')->name('blog.')->group(function () {
     Route::get('/', [\App\Http\Controllers\BlogController::class, 'index'])->name('index');
     Route::get('/{slug}', [\App\Http\Controllers\BlogController::class, 'show'])->name('show');
+});
+
+Route::prefix('how-i-solve')->name('solutions.')->group(function () {
+    Route::get('/', [ProblemSolutionController::class, 'index'])->name('index');
+    Route::get('/{slug}', [ProblemSolutionController::class, 'show'])->name('show');
 });
 
 require __DIR__ . '/settings.php';

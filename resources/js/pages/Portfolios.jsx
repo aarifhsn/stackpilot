@@ -1,10 +1,13 @@
-import { Head, Link } from '@inertiajs/react';
+import { Head } from '@inertiajs/react';
 import { useEffect, useState } from 'react';
+import Navbar from '../components/home/Navbar';
 import { useFadeIn } from '../hooks/use-fadeIn';
+import { useDarkMode } from '../lib/utils';
 
 export default function Portfolios({ portfolios, settings }) {
     const [ref, visible] = useFadeIn();
     const [active, setActive] = useState('All');
+    const [dark, setDark] = useDarkMode();
 
     // Sync dark class from localStorage on every page mount
     useEffect(() => {
@@ -32,6 +35,8 @@ export default function Portfolios({ portfolios, settings }) {
         <>
             <Head title={`Portfolio — ${settings?.site_name || 'Projects'}`} />
 
+            <Navbar dark={dark} setDark={setDark} settings={settings} />
+
             <main className="min-h-screen bg-white font-poppins dark:bg-gray-950">
                 <div
                     style={{
@@ -41,15 +46,7 @@ export default function Portfolios({ portfolios, settings }) {
                     }}
                 >
                     {/* ── Page Header ─────────────────────────── */}
-                    <div className="mb-10">
-                        <Link
-                            href="/"
-                            className="mb-6 inline-flex items-center gap-1.5 text-xs font-bold tracking-widest text-slate-400 uppercase no-underline transition-colors hover:text-slate-800 dark:text-slate-500 dark:hover:text-slate-200"
-                            style={{ letterSpacing: '1.5px' }}
-                        >
-                            ← Back
-                        </Link>
-
+                    <div className="my-10 py-8">
                         <p
                             className="mt-4 text-xs font-bold text-slate-300 uppercase dark:text-slate-600"
                             style={{ letterSpacing: '1.5px' }}

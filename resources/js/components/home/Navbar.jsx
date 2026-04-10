@@ -14,9 +14,10 @@ export default function Navbar({ dark, setDark, settings }) {
     }, []);
 
     const navLinks = [
-        { label: 'About', id: 'about' },
-        { label: 'Portfolio', id: 'portfolio' },
-        { label: 'Services', id: 'service' },
+        { label: 'Home', id: 'home', href: '/' },
+        { label: 'About', id: 'about', href: '/#about' },
+        { label: 'Portfolio', id: 'portfolio', href: '/#portfolio' },
+        { label: 'Services', id: 'service', href: '/#service' },
         {
             label: 'Blog',
             // href: settings?.blog_url || '/blog', // redirect to wp site
@@ -58,7 +59,6 @@ export default function Navbar({ dark, setDark, settings }) {
         return (
             <a
                 href={href}
-                target="_blank"
                 rel="noreferrer"
                 className="flex h-8 w-8 items-center justify-center rounded-lg border border-slate-200 text-slate-500 transition-all hover:border-gray-400 hover:text-gray-500 dark:border-slate-700 dark:text-slate-400"
                 style={{ textDecoration: 'none' }}
@@ -98,7 +98,6 @@ export default function Navbar({ dark, setDark, settings }) {
                                 <a
                                     key={link.label}
                                     href={link.href}
-                                    target="_blank"
                                     rel="noreferrer"
                                     className="rounded-lg px-3 py-2 text-[11px] font-bold tracking-[0.18em] text-slate-500 uppercase transition-all hover:bg-slate-50 hover:text-slate-700 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white"
                                     style={{ textDecoration: 'none' }}
@@ -120,12 +119,19 @@ export default function Navbar({ dark, setDark, settings }) {
                             </button>
                         ),
                     )}
-                    <button
+                    <Link
+                        href="/#contact"
                         onClick={() => scrollTo('contact')}
                         className="ml-2 cursor-pointer rounded-lg border-0 bg-gray-800 px-4 py-2 text-[11px] font-bold tracking-[0.18em] text-slate-100 uppercase transition-all hover:bg-gray-500"
                     >
                         Contact
-                    </button>
+                    </Link>
+                    <Link
+                        href="/how-i-solve"
+                        className="rounded-lg px-3 py-2 text-[11px] font-bold tracking-[0.18em] text-slate-500 uppercase transition-all hover:bg-slate-50 hover:text-slate-700 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white"
+                    >
+                        How I Solve
+                    </Link>
                 </nav>
 
                 {/* Desktop Right */}

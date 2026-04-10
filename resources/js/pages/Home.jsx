@@ -7,29 +7,7 @@ import Hero from '../components/home/Hero';
 import Navbar from '../components/home/Navbar';
 import Portfolio from '../components/home/Portfolio';
 import Services from '../components/home/Services';
-
-function scrollTo(id) {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-}
-
-function useDarkMode() {
-    const [dark, setDark] = useState(() => {
-        if (typeof window !== 'undefined') {
-            const stored = localStorage.getItem('theme');
-            if (stored !== null) return stored === 'dark';
-            return window.matchMedia('(prefers-color-scheme: dark)').matches;
-        }
-        return false;
-    });
-
-    useEffect(() => {
-        const root = document.documentElement;
-        root.classList.toggle('dark', dark);
-        localStorage.setItem('theme', dark ? 'dark' : 'light');
-    }, [dark]);
-
-    return [dark, setDark];
-}
+import { useDarkMode } from '../lib/utils';
 
 export default function HomePage({
     portfolios = [],

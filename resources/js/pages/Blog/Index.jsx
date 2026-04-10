@@ -1,6 +1,8 @@
 import Footer from '@/components/home/Footer';
 import { Head, Link, router } from '@inertiajs/react';
-import BlogNavbar from '../../components/blog/BlogNavbar';
+import { useState } from 'react';
+import Navbar from '../../components/home/Navbar';
+import { useDarkMode } from '../../lib/utils';
 
 function PostCard({ post }) {
     return (
@@ -69,6 +71,9 @@ export default function BlogIndex({
     settings,
     active_category,
 }) {
+    const [active, setActive] = useState('All');
+    const [dark, setDark] = useDarkMode();
+
     function filterByCategory(catId) {
         router.get('/blog', catId ? { category: catId } : {}, {
             preserveScroll: true,
@@ -86,7 +91,7 @@ export default function BlogIndex({
             </Head>
 
             <div className="min-h-screen bg-slate-50 font-poppins dark:bg-slate-950">
-                <BlogNavbar settings={settings} />
+                <Navbar dark={dark} setDark={setDark} settings={settings} />
 
                 {/* Hero */}
                 <div className="border-b border-slate-100 bg-white px-6 pt-32 pb-16 text-center dark:border-slate-800 dark:bg-slate-900">
