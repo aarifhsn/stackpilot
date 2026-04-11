@@ -28,7 +28,7 @@ Route::prefix('blog')->name('blog.')->group(function () {
     Route::get('/{slug}', [\App\Http\Controllers\BlogController::class, 'show'])->name('show');
 });
 
-Route::prefix('how-i-solve')->name('solutions.')->group(function () {
+Route::prefix('case-studies')->name('solutions.')->group(function () {
     Route::get('/', [ProblemSolutionController::class, 'index'])->name('index');
     Route::get('/{slug}', [ProblemSolutionController::class, 'show'])->name('show');
 });

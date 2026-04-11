@@ -127,10 +127,10 @@ export default function Navbar({ dark, setDark, settings }) {
                         Contact
                     </Link>
                     <Link
-                        href="/how-i-solve"
+                        href="/case-studies"
                         className="rounded-lg px-3 py-2 text-[11px] font-bold tracking-[0.18em] text-slate-500 uppercase transition-all hover:bg-slate-50 hover:text-slate-700 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white"
                     >
-                        How I Solve
+                        Case Studies
                     </Link>
                 </nav>
 

@@ -16,7 +16,7 @@ export default function Index({
     const tabs = ['all', ...types];
 
     function handleTypeChange(type) {
-        router.get('/how-i-solve', type !== 'all' ? { type } : {}, {
+        router.get('/case-studies', type !== 'all' ? { type } : {}, {
             preserveState: true,
             replace: true,
         });

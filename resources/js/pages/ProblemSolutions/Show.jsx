@@ -66,7 +66,7 @@ export default function Show({ solution, settings = {} }) {
                 <div className="border-b border-slate-100 bg-slate-50 pt-24 dark:border-slate-800 dark:bg-slate-900">
                     <div className="mx-auto max-w-4xl px-6 py-12 lg:px-8">
                         <Link
-                            href="/how-i-solve"
+                            href="/case-studies"
                             className="mb-8 inline-flex items-center gap-1.5 text-[10px] font-bold tracking-widest text-slate-400 uppercase transition-colors hover:text-slate-600 dark:hover:text-slate-300"
                         >
                             ← Back to all breakdowns
@@ -288,7 +288,7 @@ export default function Show({ solution, settings = {} }) {
                                 Get in touch →
                             </a>
                             <Link
-                                href="/how-i-solve"
+                                href="/case-studies"
                                 className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-7 py-3.5 text-xs font-bold tracking-widest text-slate-600 uppercase transition-all hover:border-slate-400 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-300"
                             >
                                 More breakdowns

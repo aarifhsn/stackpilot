@@ -56,7 +56,7 @@ export default function ProblemSolutionCard({ solution, visible, delay }) {
 
                 {/* Title */}
                 <Link
-                    href={`/how-i-solve/${solution.slug}`}
+                    href={`/case-studies/${solution.slug}`}
                     className="block text-lg leading-tight font-bold text-slate-800 transition-colors hover:text-slate-500 dark:text-white dark:hover:text-slate-300"
                 >
                     {solution.title}
@@ -92,7 +92,7 @@ export default function ProblemSolutionCard({ solution, visible, delay }) {
                     </span>
                     <Link
                         // href={route('solutions.show', solution.slug)}
-                        href={`/how-i-solve/${solution.slug}`}
+                        href={`/case-studies/${solution.slug}`}
                         className="group/cta inline-flex items-end gap-1.5 text-right text-xs font-bold tracking-wider text-slate-700 uppercase transition-colors hover:text-slate-400 dark:text-slate-300 dark:hover:text-slate-500"
                     >
                         View Breakdown
