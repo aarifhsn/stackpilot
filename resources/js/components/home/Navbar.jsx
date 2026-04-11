@@ -5,10 +5,10 @@ import SiteLogo from './icons/SiteLogo';
 export default function Navbar({ dark, setDark, settings }) {
     const [scrolled, setScrolled] = useState(false);
     const [mobileOpen, setMobileOpen] = useState(false);
-    const [active, setActive] = useState('home');
 
     const currentPath =
         typeof window !== 'undefined' ? window.location.pathname : '';
+    const onHomepage = currentPath === '/';
 
     useEffect(() => {
         const onScroll = () => setScrolled(window.scrollY > 20);
@@ -17,26 +17,11 @@ export default function Navbar({ dark, setDark, settings }) {
     }, []);
 
     const navLinks = [
-        { label: 'Home', id: 'home', href: '/', path: '/' },
-        { label: 'About', id: 'about', href: '/#about', anchor: 'about' },
-        {
-            label: 'Portfolio',
-            id: 'portfolio',
-            href: '/#portfolio',
-            anchor: 'portfolio',
-        },
-        {
-            label: 'Services',
-            id: 'service',
-            href: '/#service',
-            anchor: 'service',
-        },
-        {
-            label: 'Blog',
-            // href: settings?.blog_url || '/blog', // redirect to wp site
-            href: '/blog',
-            path: '/blog',
-        },
+        { label: 'Home', href: '/', path: '/' },
+        { label: 'About', href: '/#about', anchor: 'about' },
+        { label: 'Portfolio', href: '/#portfolio', anchor: 'portfolio' },
+        { label: 'Services', href: '/#service', anchor: 'service' },
+        { label: 'Blog', href: '/blog', path: '/blog' },
     ];
 
     function SocialIcon({ href, icon }) {
@@ -86,10 +71,96 @@ export default function Navbar({ dark, setDark, settings }) {
         document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
     }
 
-    const isActive = (link) => {
-        if (link.path) return currentPath === link.path;
-        return false;
-    };
+    function toggleDark() {
+        const next = !dark;
+        setDark(next);
+        localStorage.setItem('theme', next ? 'dark' : 'light');
+        document.documentElement.classList.toggle('dark', next);
+    }
+
+    // ── Shared class builders ──────────────────────────────────────────────
+    const desktopLinkCls = (isActivePath) =>
+        `rounded-lg px-3 py-2 text-[11px] font-bold tracking-[0.18em] uppercase transition-all ${
+            isActivePath
+                ? 'bg-slate-100 text-slate-800 dark:bg-slate-700 dark:text-white'
+                : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white'
+        }`;
+
+    const mobileLinkCls = (isActivePath) =>
+        `border-b border-slate-50 py-3 text-left text-xs font-bold tracking-widest uppercase dark:border-slate-800 ${
+            isActivePath
+                ? 'text-slate-800 dark:text-white'
+                : 'text-slate-500 dark:text-slate-400'
+        }`;
+
+    // ── Render a single nav link (desktop) ────────────────────────────────
+    function DesktopLink({ link }) {
+        const active = link.path ? currentPath === link.path : false;
+
+        // Anchor links — scroll on homepage, navigate on other pages
+        if (link.anchor) {
+            return onHomepage ? (
+                <button
+                    onClick={() => scrollTo(link.anchor)}
+                    className={desktopLinkCls(false)}
+                >
+                    {link.label}
+                </button>
+            ) : (
+                <a
+                    href={link.href}
+                    className={desktopLinkCls(false)}
+                    style={{ textDecoration: 'none' }}
+                >
+                    {link.label}
+                </a>
+            );
+        }
+
+        return (
+            <Link href={link.href} className={desktopLinkCls(active)}>
+                {link.label}
+            </Link>
+        );
+    }
+
+    // ── Render a single nav link (mobile) ─────────────────────────────────
+    function MobileLink({ link }) {
+        const active = link.path ? currentPath === link.path : false;
+
+        if (link.anchor) {
+            return onHomepage ? (
+                <button
+                    onClick={() => {
+                        scrollTo(link.anchor);
+                        setMobileOpen(false);
+                    }}
+                    className={mobileLinkCls(false)}
+                >
+                    {link.label}
+                </button>
+            ) : (
+                <a
+                    href={link.href}
+                    className={mobileLinkCls(false)}
+                    style={{ textDecoration: 'none' }}
+                    onClick={() => setMobileOpen(false)}
+                >
+                    {link.label}
+                </a>
+            );
+        }
+
+        return (
+            <Link
+                href={link.href}
+                className={mobileLinkCls(active)}
+                onClick={() => setMobileOpen(false)}
+            >
+                {link.label}
+            </Link>
+        );
+    }
 
     return (
         <header
@@ -101,58 +172,23 @@ export default function Navbar({ dark, setDark, settings }) {
         >
             <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 lg:px-8">
                 <SiteLogo />
-                {/* Desktop Nav */}
+
+                {/* ── Desktop Nav ──────────────────────────────────────── */}
                 <nav className="hidden items-center gap-1 lg:flex">
-                    {navLinks.map((link) =>
-                        link.href ? (
-                            link.label === 'Blog' ? (
-                                <Link
-                                    key={link.label}
-                                    href={link.href}
-                                    className={`rounded-lg px-3 py-2 text-[11px] font-bold tracking-[0.18em] uppercase transition-all ${
-                                        isActive(link)
-                                            ? 'bg-slate-100 text-slate-800 dark:bg-slate-700 dark:text-white'
-                                            : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white'
-                                    }`}
-                                >
-                                    {link.label}
-                                </Link>
-                            ) : (
-                                <a
-                                    key={link.label}
-                                    href={link.href}
-                                    rel="noreferrer"
-                                    className={`rounded-lg px-3 py-2 text-[11px] font-bold tracking-[0.18em] uppercase transition-all ${
-                                        isActive(link)
-                                            ? 'bg-slate-100 text-slate-800 dark:bg-slate-700 dark:text-white'
-                                            : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white'
-                                    }`}
-                                    style={{ textDecoration: 'none' }}
-                                >
-                                    {link.label}
-                                </a>
-                            )
-                        ) : (
-                            <button
-                                key={link.label}
-                                onClick={() => scrollTo(link.id)}
-                                className={`cursor-pointer rounded-lg border-0 bg-transparent px-3 py-2 text-[11px] font-bold tracking-[0.18em] uppercase transition-all ${
-                                    active === link.id
-                                        ? 'bg-slate-50 text-slate-700 dark:bg-slate-800 dark:text-white'
-                                        : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white'
-                                }`}
-                            >
-                                {link.label}
-                            </button>
-                        ),
-                    )}
+                    {navLinks.map((link) => (
+                        <DesktopLink key={link.label} link={link} />
+                    ))}
+
+                    {/* Contact CTA */}
                     <Link
                         href="/#contact"
-                        onClick={() => scrollTo('contact')}
+                        onClick={() => onHomepage && scrollTo('contact')}
                         className="ml-2 cursor-pointer rounded-lg border-0 bg-gray-800 px-4 py-2 text-[11px] font-bold tracking-[0.18em] text-slate-100 uppercase transition-all hover:bg-gray-500"
                     >
                         Contact
                     </Link>
+
+                    {/* Case Studies */}
                     <Link
                         href="/case-studies"
                         className={`rounded-lg px-3 py-2 text-[11px] font-bold tracking-[0.18em] uppercase transition-all ${
@@ -165,7 +201,7 @@ export default function Navbar({ dark, setDark, settings }) {
                     </Link>
                 </nav>
 
-                {/* Desktop Right */}
+                {/* ── Desktop Right ────────────────────────────────────── */}
                 <div className="hidden items-center gap-2 lg:flex">
                     {settings?.github_url && (
                         <SocialIcon href={settings.github_url} icon="github" />
@@ -190,41 +226,18 @@ export default function Navbar({ dark, setDark, settings }) {
                         </span>
                     </div>
 
-                    {/* Dark toggle */}
                     <button
-                        onClick={() => {
-                            const next = !dark;
-                            setDark(next);
-                            localStorage.setItem(
-                                'theme',
-                                next ? 'dark' : 'light',
-                            );
-                            document.documentElement.classList.toggle(
-                                'dark',
-                                next,
-                            );
-                        }}
+                        onClick={toggleDark}
                         className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white text-base transition-all hover:shadow-md dark:border-slate-700 dark:bg-slate-800"
                     >
                         {dark ? '🔆' : '🌙'}
                     </button>
                 </div>
 
-                {/* Mobile hamburger */}
+                {/* ── Mobile hamburger ─────────────────────────────────── */}
                 <div className="flex items-center gap-2 lg:hidden">
                     <button
-                        onClick={() => {
-                            const next = !dark;
-                            setDark(next);
-                            localStorage.setItem(
-                                'theme',
-                                next ? 'dark' : 'light',
-                            );
-                            document.documentElement.classList.toggle(
-                                'dark',
-                                next,
-                            );
-                        }}
+                        onClick={toggleDark}
                         className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white text-base dark:border-slate-700 dark:bg-slate-800"
                     >
                         {dark ? '🔆' : '🌙'}
@@ -240,10 +253,12 @@ export default function Navbar({ dark, setDark, settings }) {
                 </div>
             </div>
 
-            {/* Mobile Menu */}
+            {/* ── Mobile Menu ──────────────────────────────────────────── */}
             <div
                 className={`overflow-hidden transition-all duration-300 lg:hidden ${
-                    mobileOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                    mobileOpen
+                        ? 'max-h-screen opacity-100'
+                        : 'max-h-0 opacity-0'
                 }`}
                 style={{
                     background: dark
@@ -252,59 +267,22 @@ export default function Navbar({ dark, setDark, settings }) {
                 }}
             >
                 <div className="flex flex-col gap-1 border-t border-slate-100 px-6 py-4 dark:border-slate-800">
-                    {navLinks.map((link) =>
-                        link.href ? (
-                            link.label === 'Blog' ? (
-                                <Link
-                                    key={link.label}
-                                    href={link.href}
-                                    className="border-b border-slate-50 py-3 text-xs font-bold tracking-widest text-slate-500 uppercase dark:border-slate-800 dark:text-slate-400"
-                                    onClick={() => setMobileOpen(false)}
-                                >
-                                    {link.label}
-                                </Link>
-                            ) : (
-                                <a
-                                    key={link.label}
-                                    href={link.href}
-                                    className={`border-b border-slate-50 py-3 text-xs font-bold tracking-widest uppercase dark:border-slate-800 ${
-                                        isActive(link)
-                                            ? 'text-slate-800 dark:text-white'
-                                            : 'text-slate-500 dark:text-slate-400'
-                                    }`}
-                                    style={{ textDecoration: 'none' }}
-                                >
-                                    {link.label}
-                                </a>
-                            )
-                        ) : (
-                            <button
-                                key={link.label}
-                                onClick={() => {
-                                    scrollTo(link.id);
-                                    setMobileOpen(false);
-                                }}
-                                className={`border-b border-slate-50 py-3 text-xs font-bold tracking-widest uppercase dark:border-slate-800 ${
-                                    isActive(link)
-                                        ? 'text-slate-800 dark:text-white'
-                                        : 'text-slate-500 dark:text-slate-400'
-                                }`}
-                            >
-                                {link.label}
-                            </button>
-                        ),
-                    )}
+                    {navLinks.map((link) => (
+                        <MobileLink key={link.label} link={link} />
+                    ))}
+
+                    {/* Case Studies */}
                     <Link
                         href="/case-studies"
-                        className={`border-b border-slate-50 py-3 text-xs font-bold tracking-widest uppercase dark:border-slate-800 ${
-                            currentPath === '/case-studies'
-                                ? 'text-slate-800 dark:text-white'
-                                : 'text-slate-500 dark:text-slate-400'
-                        }`}
+                        className={mobileLinkCls(
+                            currentPath === '/case-studies',
+                        )}
                         onClick={() => setMobileOpen(false)}
                     >
                         Case Studies
                     </Link>
+
+                    {/* Contact */}
                     <button
                         onClick={() => {
                             scrollTo('contact');
