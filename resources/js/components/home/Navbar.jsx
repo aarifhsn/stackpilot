@@ -7,6 +7,9 @@ export default function Navbar({ dark, setDark, settings }) {
     const [mobileOpen, setMobileOpen] = useState(false);
     const [active, setActive] = useState('home');
 
+    const currentPath =
+        typeof window !== 'undefined' ? window.location.pathname : '';
+
     useEffect(() => {
         const onScroll = () => setScrolled(window.scrollY > 20);
         window.addEventListener('scroll', onScroll);
@@ -14,14 +17,25 @@ export default function Navbar({ dark, setDark, settings }) {
     }, []);
 
     const navLinks = [
-        { label: 'Home', id: 'home', href: '/' },
-        { label: 'About', id: 'about', href: '/#about' },
-        { label: 'Portfolio', id: 'portfolio', href: '/#portfolio' },
-        { label: 'Services', id: 'service', href: '/#service' },
+        { label: 'Home', id: 'home', href: '/', path: '/' },
+        { label: 'About', id: 'about', href: '/#about', anchor: 'about' },
+        {
+            label: 'Portfolio',
+            id: 'portfolio',
+            href: '/#portfolio',
+            anchor: 'portfolio',
+        },
+        {
+            label: 'Services',
+            id: 'service',
+            href: '/#service',
+            anchor: 'service',
+        },
         {
             label: 'Blog',
             // href: settings?.blog_url || '/blog', // redirect to wp site
             href: '/blog',
+            path: '/blog',
         },
     ];
 
@@ -72,6 +86,11 @@ export default function Navbar({ dark, setDark, settings }) {
         document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
     }
 
+    const isActive = (link) => {
+        if (link.path) return currentPath === link.path;
+        return false;
+    };
+
     return (
         <header
             className={`fixed top-0 left-0 z-50 w-full transition-all duration-300 ${
@@ -90,7 +109,11 @@ export default function Navbar({ dark, setDark, settings }) {
                                 <Link
                                     key={link.label}
                                     href={link.href}
-                                    className="rounded-lg px-3 py-2 text-[11px] font-bold tracking-[0.18em] text-slate-500 uppercase transition-all hover:bg-slate-50 hover:text-slate-700 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white"
+                                    className={`rounded-lg px-3 py-2 text-[11px] font-bold tracking-[0.18em] uppercase transition-all ${
+                                        isActive(link)
+                                            ? 'bg-slate-100 text-slate-800 dark:bg-slate-700 dark:text-white'
+                                            : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white'
+                                    }`}
                                 >
                                     {link.label}
                                 </Link>
@@ -99,7 +122,11 @@ export default function Navbar({ dark, setDark, settings }) {
                                     key={link.label}
                                     href={link.href}
                                     rel="noreferrer"
-                                    className="rounded-lg px-3 py-2 text-[11px] font-bold tracking-[0.18em] text-slate-500 uppercase transition-all hover:bg-slate-50 hover:text-slate-700 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white"
+                                    className={`rounded-lg px-3 py-2 text-[11px] font-bold tracking-[0.18em] uppercase transition-all ${
+                                        isActive(link)
+                                            ? 'bg-slate-100 text-slate-800 dark:bg-slate-700 dark:text-white'
+                                            : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white'
+                                    }`}
                                     style={{ textDecoration: 'none' }}
                                 >
                                     {link.label}
@@ -128,7 +155,11 @@ export default function Navbar({ dark, setDark, settings }) {
                     </Link>
                     <Link
                         href="/case-studies"
-                        className="rounded-lg px-3 py-2 text-[11px] font-bold tracking-[0.18em] text-slate-500 uppercase transition-all hover:bg-slate-50 hover:text-slate-700 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white"
+                        className={`rounded-lg px-3 py-2 text-[11px] font-bold tracking-[0.18em] uppercase transition-all ${
+                            currentPath === '/case-studies'
+                                ? 'bg-lime-300 text-slate-800'
+                                : 'bg-lime-200 text-slate-800 hover:bg-lime-300'
+                        }`}
                     >
                         Case Studies
                     </Link>
@@ -236,7 +267,11 @@ export default function Navbar({ dark, setDark, settings }) {
                                 <a
                                     key={link.label}
                                     href={link.href}
-                                    className="border-b border-slate-50 py-3 text-xs font-bold tracking-widest text-slate-500 uppercase dark:border-slate-800 dark:text-slate-400"
+                                    className={`border-b border-slate-50 py-3 text-xs font-bold tracking-widest uppercase dark:border-slate-800 ${
+                                        isActive(link)
+                                            ? 'text-slate-800 dark:text-white'
+                                            : 'text-slate-500 dark:text-slate-400'
+                                    }`}
                                     style={{ textDecoration: 'none' }}
                                 >
                                     {link.label}
@@ -249,18 +284,33 @@ export default function Navbar({ dark, setDark, settings }) {
                                     scrollTo(link.id);
                                     setMobileOpen(false);
                                 }}
-                                className="cursor-pointer border-x-0 border-t-0 border-b border-slate-50 bg-transparent py-3 text-left text-xs font-bold tracking-widest text-slate-500 uppercase dark:border-slate-800 dark:text-slate-400"
+                                className={`border-b border-slate-50 py-3 text-xs font-bold tracking-widest uppercase dark:border-slate-800 ${
+                                    isActive(link)
+                                        ? 'text-slate-800 dark:text-white'
+                                        : 'text-slate-500 dark:text-slate-400'
+                                }`}
                             >
                                 {link.label}
                             </button>
                         ),
                     )}
+                    <Link
+                        href="/case-studies"
+                        className={`border-b border-slate-50 py-3 text-xs font-bold tracking-widest uppercase dark:border-slate-800 ${
+                            currentPath === '/case-studies'
+                                ? 'text-slate-800 dark:text-white'
+                                : 'text-slate-500 dark:text-slate-400'
+                        }`}
+                        onClick={() => setMobileOpen(false)}
+                    >
+                        Case Studies
+                    </Link>
                     <button
                         onClick={() => {
                             scrollTo('contact');
                             setMobileOpen(false);
                         }}
-                        className="mt-3 cursor-pointer rounded-lg border-0 bg-gray-400 py-3 text-xs font-bold tracking-widest text-slate-700 uppercase"
+                        className="mt-3 cursor-pointer rounded-lg border-0 bg-gray-800 py-3 text-xs font-bold tracking-widest text-slate-100 uppercase"
                     >
                         Contact
                     </button>
